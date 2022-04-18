@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+ /*1．把α转换为块级元素*/
+ a {
+    display: block;
+    width: 200px;
+    height: 40px;
+    background-color: #55585a;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 3em;
+    /* 垂直居中 */
+    line-height: 40px;
+    /* text-align: center; 水平居中*/
+}
+.dinbu {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+}
+.dibu {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+.basic  {
+    position: fixed;
+    top: 110px; 
+    right: 10px;
+}
+.mobile  {
+    position: fixed;
+    top: 160px;
+    right: 10px;
+}
+.js {
+    position: fixed;
+    top: 210px;
+    right: 10px;
+}
+.pink {
+    position: fixed;
+    top: 260px;
+    right: 10px;
+}
+.notice {
+    position: fixed;
+    top: 310px;
+    right: 10px;
+}
+a {
+    margin-bottom: 10px;
+}
+p {
+    color: brown;
+    font-weight: 700;
+    text-indent: 2em;
+}
+/*2鼠标经过链接变换背景颜色
+a:hover {
+    background-color: #ff6700;
+}
+
+ .float {
+    width: 50%;
+
+    height: 300px;
+
+    border: 1px solid #ccc;
+
+    float: left;
+
+    box-sizing: border-box;
+    float: left;
+} */

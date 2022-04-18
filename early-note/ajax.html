@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>ajax编程基础</h1>
+    <p>ajax是为了提高用户浏览网页的体验</p>
+    <p>对象.和对象[] 如果要获取变量要用[]</p>
+    <xmp>
+        // 1.创建ajax对象
+        var xhr = new XMLHttpRequest();
+        // 2.告诉Ajax对象要向哪发送请求，以什么方式发送请求
+        // 1)请求方式 2)请求地址
+        xhr.open('get', 'http://localhost:3000/first');
+        // 3.发送请求
+        xhr.send();
+        // 4.获取服务器端响应到客户端的数据
+        xhr.onload = function (){
+        console.log(xhr.responseText)
+        }
+    </xmp>
+    <p>JSON.parse() 将 json 字符串转换为json对象 JSON.stringify反之</p>
+    <xmp>
+        //get请求方式
+        // 配置ajax对象
+        xhr.open('get', 'http://localhost:3000/get?'+params);
+        // 发送请求
+        xhr.send();
+    </xmp>
+    <p>post请求参数的格式 application/x-www-form-urlencode application/json</p>
+    <xmp>
+        //post请求方式
+        xhr.open('post', 'http://localhost:3000/post');
+        // 设置请求参数格式的类型（post请求必须要设置）
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // 发送请求
+        xhr.send(params);
+    </xmp>
+    <p>onreadystatechange事件了解</p>
+    <p>xhr.readyState // 获取Ajax状态码</p>
+    <p>0：请求未初始化(还没有调用open())</p>
+    <p>1：请求已经建立，但是还没有发送(还没有调用send())</p>
+    <p>2：请求已经发送</p>
+    <p>3：请求正在处理中，通常响应中已经有部分数据可以用了</p>
+    <p>4：响应已经完成，可以获取并使用服务器的响应了</p>
+    <p>onreadystatechange事件 当 Ajax 状态码发生变化时将自动触发该事件。</p>
+    <xmp>
+        // 当Ajax状态码发生变化时
+        xhr.onreadystatechange = function () {
+        // 判断当Ajax状态码为4时
+        if (xhr.readyState == 4) {
+        // 获取服务器端的响应数据
+        console.log(xhr.responseText);
+        }
+        }
+    </xmp>
+    <p>区别描述 onload事件 onreadystatechange事件</p>
+    <p>是否兼容IE低版本 不兼容 兼容</p>
+    <p>是否需要判断Ajax状态码 不需要 需要</p>
+    <p>被调用次数 一次 多次</p>
+    <p>xhr.status 获取http状态码</p>
+    <p>Ajax 错误处理</p>
+    <p>1. 网络畅通，服务器端能接收到请求，服务器端返回的结果不是预期结果。
+        可以判断服务器端返回的状态码，分别进行处理。xhr.status 获取http状态码</p>
+    <p>2. 网络畅通，服务器端没有接收到请求，返回404状态码。
+        检查请求地址是否错误。</p>
+    <p>3. 网络畅通，服务器端能接收到请求，服务器端返回500状态码。
+        服务器端错误，找后端程序员进行沟通。</p>
+    <p>4. 网络中断，请求无法发送到服务器端。
+        会触发xhr对象下面的onerror事件，在onerror事件处理函数中对错误进行处理。</p>
+    <hr>
+
+    <h1>ajax编程扩展</h1>
+    <p>在localhost下面运行html文件得利用静态资源访问 这样就可以避免跨域的问题</p>
+    <p>客户端使用模板引擎进行拼接</p>
+    <xmp>
+        <script src="./js/template-web.js"></script>
+        <script id="tpl" type="text/html">
+         <div class="box">{{ username }}</div>
+        </script>
+        <script>
+            //第二个参数是一个对象 可以直接传response进去
+            var html = template('tpl', { username: 'zhangsan', age: '20' });
+            document.querySelector('.box').innerHTML = html;
+        </script>
+    </xmp>
+    <xmp>
+        <form id="form">
+            <input type="text" name="username" />
+            <input type="password" name="password" />
+            <input type="button" />
+        </form>
+        var form = document.getElementById('form');
+        var formData = new FormData(form);
+        xhr.send(formData);
+    </xmp>
+    <p>FormData 对象的作用</p>
+    <p>模拟HTML表单，相当于将HTML表单映射成表单对象，自动将表单对象中的数据拼接成请求参数的格式</p>
+    <p>异步上传二进制文件 可以上传图片视频等 直接将表单对象作为请求参数传递到服务器端 免去了表单控件的获取值的获取参数格式的拼接</p>
+    <p>注意：
+        1.Formdata 对象不能用于 get 请求，因为对象需要被传递到 send 方法中，而 get 请求方式的请求参数只能放在请求地址的后面。</p>
+    <p>2.服务器端 bodyParser 模块不能解析 formData 对象表单数据，我们需要使用 formidable 模块进行解析。</p>
+    <p>FormData 对象的实例方法 1. 获取表单对象中属性的值 formData.get('key'); 2. 设置表单对象中属性的值 formData.set('key', 'value');</p>
+    <p>3. 删除表单对象中属性的值 formData.delete('key'); 4. 向表单对象中追加属性值 formData.append('key', 'value');</p>
+    <p>注意：set 方法与 append 方法的区别是，在属性名已存在的情况下，set 会覆盖已有键名的值，append会保留两个值。</p>
+    <xmp>
+        file.onchange = function () {
+        // 创建空的formData表单对象
+        var formData = new FormData();
+        // 将用户选择的文件追加到formData表单对象中
+        formData.append('attrName', this.files[0]);
+        // 创建ajax对象
+        var xhr = new XMLHttpRequest();
+        // 对ajax对象进行配置
+        xhr.open('post', 'http://localhost:3000/upload');
+        // 在文件上传的过程中持续触发
+        xhr.upload.onprogress = function (ev) {
+        // ev.loaded 文件已经上传了多少
+        // ev.total 上传文件的总大小
+        var result = (ev.loaded / ev.total) * 100 + '%';
+        // 设置进度条的宽度
+        bar.style.width = result;
+        // 将百分比显示在进度条中
+        bar.innerHTML = result;
+        }
+        // 发送ajax请求
+        xhr.send(formData);
+        // 监听服务器端响应给客户端的数据
+        xhr.onload = function () {
+        // 如果服务器端返回的http状态码为200
+        // 说明请求是成功的
+        if (xhr.status == 200) {
+        // 将服务器端返回的数据显示在控制台中
+        var result = JSON.parse(xhr.responseText);
+        // 动态创建img标签
+        //是因为加载图片需要时间 动态创建img等加载完在显示 用户体验更好
+        var img = document.createElement('img');
+        // 给图片标签设置src属性
+        img.src = result.path;
+        // 当图片加载完成以后
+        img.onload = function () {
+        // 将图片显示在页面中
+        box.appendChild(img);
+        }
+        }
+        }
+        }
+    </xmp>
+    <xmp>
+        app.post('/formData', (req, res) => {
+        // 创建formidable表单解析对象
+        const form = new formidable.IncomingForm();
+        // 解析客户端传递过来的FormData对象
+        form.parse(req, (err, fields, files) => {
+        res.send(fields);
+        });
+        });
+
+        // 实现文件上传的路由
+        app.post('/upload', (req, res) => {
+        // 创建formidable表单解析对象
+        const form = new formidable.IncomingForm();
+        // 设置客户端上传文件的存储路径
+        form.uploadDir = path.join(__dirname);
+        // 保留上传文件的后缀名字
+        form.keepExtensions = true;
+        // 解析客户端传递过来的FormData对象
+        form.parse(req, (err, fields, files) => {
+        // 将客户端传递过来的文件地址响应到客户端
+        //这个attrName就是我们在上面上传的
+        res.send({
+        path: files.attrName.path.split('todolist')[1]
+        });
+        });
+        });
+    </xmp>
+    <h3>同源政策 跨域</h3>
+    <p>如果两个页面拥有相同的协议、域名和端口，那么这两个页面就属于同一个源，其中只要有一个不相同，就是不同源。
+        http://www.example.com/dir/page.html</p>
+    <p>http://www.example.com/dir2/other.html：同源</p>
+    <p>http://example.com/dir/other.html：不同源（域名不同）</p>
+    <p>http://v2.www.example.com/dir/other.html：不同源（域名不同）</p>
+    <p>http://www.example.com:81/dir/other.html：不同源（端口不同）</p>
+    <p>https://www.example.com/dir/page.html：不同源（协议不同）</p>
+    <p>同源政策是为了保证用户信息的安全，防止恶意的网站窃取数据。最初的同源政策是指 A 网站在客户端设置的 Cookie，B网站是不能访问的。</p>
+    <p>随着互联网的发展，同源政策也越来越严格，在不同源的情况下，其中有一项规定就是无法向非同源地址发送Ajax 请求，如果请求，浏览器就会报错。</p>
+    <h3>①JSONP解决同源限制</h3>
+    <p>JSONP请求属于get请求 因为是通过script标签</p>
+    <p>1. 将不同源的服务器端请求地址写在 script 标签的 src 属性中 (script的src可以写任意链接 但是内容必须得是js代码)</p>
+    <xmp>
+        <script src=“https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    </xmp>
+    <p>2. 服务器端响应数据必须是一个函数的调用，真正要发送给客户端的数据需要作为函数调用的参数</p>
+    <xmp>
+        const data = 'fn({name: "张三", age: "20"})';
+        res.send(data);
+    </xmp>
+    <p>3. 在客户端全局作用域下定义函数 fn 第二步返回一个函数的调用 所以我们要先准备一个函数 并且要写在script标签的上面</p>
+    <xmp>
+        function fn (data) { }
+    </xmp>
+    <p>4. 在 fn 函数内部对服务器端返回的数据进行处理</p>
+    <xmp>
+        function fn (data) { console.log(data); }
+    </xmp>
+    <h3>②CORS 跨域资源共享</h3>
+    <p>CORS：全称为 Cross-origin resource sharing，即跨域资源共享，它允许浏览器向跨域服务器发送 Ajax 请求，克服了 Ajax 只能同源使用的限制</p>
+    <p>在服务器端设置</p>
+    <xmp>
+        app.use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET, POST');
+        next();
+        })
+    </xmp>
+    <h3>③访问非同源数据 服务器端解决方案</h3>
+    <p>引入request模块</p>
+    <xmp>
+        app.get('/server', (req, res) => {
+        request('http://localhost:3001/cross', (err, response, body) => {
+        res.send(body);
+        })
+        });
+    </xmp>
+    <p>在使用Ajax技术发送跨域请求时，默认情况下不会在请求中携带cookie信息</p>
+    <p>客户端设置withCredentials：指定在涉及到跨域请求时，是否携带cookie信息，默认值为false</p>
+    <p>服务器端设置Access-Control-Allow-Credentials：true 允许客户端发送请求时携带cookie</p>
+    <xmp>
+        // 当发送跨域请求时，携带cookie信息
+        xhr.withCredentials = true;
+
+        // 允许客户端发送跨域请求时携带cookie信息
+        res.header('Access-Control-Allow-Credentials', true);
+    </xmp>
+    <hr>
+
+    <h1>JQury中的ajax</h1>
+    <p>$.ajax()方法概述</p>
+    <xmp>
+        $.ajax({
+        type: 'get',
+        url: 'http://www.example.com',
+        //data可以接收对象类型的数据也可以接收参数字符串
+        data: { name: 'zhangsan', age: '20' },
+        contentType: 'application/x-www-form-urlencoded',
+        beforeSend: function () {
+        return false
+        },
+        success: function (response) {},
+        error: function (xhr) {}
+        });
+
+        $.ajax({
+        url: 'http://www.example.com',
+        // 指定当前发送jsonp请求
+        dataType: 'jsonp',
+        // 修改callback参数名称
+        jsonp: 'cb',
+        // 指定函数名称
+        jsonCallback: 'fnName',
+        success: function (response) {}
+        })
+
+    </xmp>
+    <p>$.get()、$.post()方法概述</p>
+    <xmp>
+        $.get('http://www.example.com', {name: 'zhangsan', age: 30}, function (response) {})
+        $.post('http://www.example.com', {name: 'lisi', age: 22}, function (response) {})
+    </xmp>
+    <p>jQuery中Ajax全局事件</p>
+    <xmp>
+        .ajaxStart() // 当请求开始发送时触发
+        .ajaxComplete() // 当请求完成时触发
+    </xmp>
+    <p>nprogress 进度条模块</p>
+    <xmp>
+        NProgress.start(); // 进度条开始运动
+        NProgress.done(); // 进度条结束运动
+    </xmp>
+    <hr>
+
+    <h1>RESTful</h1>
+    <p>RESTful风格的API</p>
+    <p>GET：http://www.example.com/users 获取用户列表数据</p>
+    <p>POST：http://www.example.com/users 创建(添加)用户数据</p>
+    <p>GET：http://www.example.com/users/1 获取用户ID为1的用户信息</p>
+    <p>PUT：http://www.example.com/users/1 修改用户ID为1的用户信息</p>
+    <p>DELETE：http://www.example.com/users/1 删除用户ID为1的用户信息</p>
+
+
+    <hr>
+</body>
+
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 16px/1.5 YaHei;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .ab {
+            font-size: 40px;
+            font-family: Microsoft;
+        }
+
+        .font {
+            position: absolute;
+            right: 0;
+            top: 600px;
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            /* font: font-style font-weight font-size/line-height font-family; line-height和height相等就可以垂直居中*/
+            font: italic 400 20px/100px YaHei;
+            color: pink;
+            text-align: center;
+            text-decoration: line-through;
+            /* text-indent: 2em; */
+        }
+
+
+        .background>img {
+            width: 600px;
+            vertical-align: middle;
+
+        }
+
+        .background {
+            width: 600px;
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-left: 10px;
+        }
+
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 217px;
+            height: 217px;
+            background-color: #fede4f;
+            opacity: .5;
+            border: 1px solid #ccc;
+            cursor: move;
+            z-index: 100;
+        }
+
+        .big {
+            display: none;
+            position: absolute;
+            left: 610px;
+            top: 0;
+            width: 700px;
+            height: 700px;
+            background-color: yellowgreen;
+            overflow: hidden;
+        }
+
+        .bigimg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        p {
+            text-indent: 2em;
+            margin: 10px;
+        }
+
+        body {
+            position: relative;
+            height: 1rem;
+
+        }
+
+        #pic {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="6">6</p><strong><ins><del><em></em></del></ins></strong>
+    <br>
+    <span>1.jpg</span>
+    <div>2.jpg</div>
+    <!-- border一般是通过css实现 -->
+    <img src="../../images/early/600.jpg" alt="azhe" title="加油哦" width="" height="" border="10px">
+    <p>相对路径：同一级名字，上一级../，下一级文件夹/名字</p>
+    <p>绝对路径：电脑上文件的位置或者网络地址</p>
+    <div><a href="#">？？?</a></div>
+    <div><a href="https://www.bilibili.com/" target="blank">B站</a></div>
+    <div><a href="#6">锚点链接</a></div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">1</th>
+                <th>1</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td rowspan="2">1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>无序列表</li>
+        <li>1</li>
+    </ul>
+    <ol>
+        <li>有序列表</li>
+        <li>2</li>
+    </ol>
+    <dl>
+        <dt>自定义列表</dt>
+        <dd>3</dd>
+        <dd>4</dd>
+    </dl>
+    <form action="#" method="dialog" name="表单">
+        <label for="1111"> 输入框</label>
+        <input type="text" name="这个有什么用" value="输入" maxlength="10" checked id="1111">
+        <select name="选择" id="2222">
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+        </select><br>
+        <textarea name="文本域" id="3333" cols="30" rows="10"></textarea>
+    </form>
+
+    <p>1属性值前面，冒号后面，保留一个空格2选择器(标签)和大括号中间保留空格</p>
+    <p>标签选择器p 类选择器. id选择器# 通配符选择器*</p>
+    <p>多类名用空格隔开</p>
+    <p>font-style字体样式 </p>
+    <p>font-weight字体粗细</p>
+    <p>font-size字体大小</p>
+    <p>字体font-family加引号，多字体用空格隔开</p>
+    <p>color字体颜色</p>
+    <p>text-align水平对齐方式center lift right</p>
+    <p>text-decoration装饰文本none underline overline line-through删除线</p>
+    <p>text-indent段落首句缩进 em是当前元素一个文字大小</p>
+    <p>line-height是行高，使之与盒子相等就可以垂直居中</p>
+    <div class="font">rpec</div>
+    <p>复合选择器</p>
+    <p>后代选择器 元素1 元素2 所有后代</p>
+    <p>子选择器 元素1&gt元素2 亲儿子</p>
+    <p>并集选择器 元素1，元素2 集体声明</p>
+    <p>伪类选择器用： 链接伪类选择器<br>
+        a:1ink 选择所有未被访问的链接<br>
+        a:visited选择所有己被访问的链接<br>
+        a:hover选择鼠标指针位于其上的链接<br>
+        a:active选择活动链接(鼠标按下未松的链接)<br>
+        声明顺序love hate<br>
+        :focus选择器选择获得光标的表单 input：focus
+    </p>
+    <p>display:block display:inline-block</p>
+    <p>background-color background-image none/url</p>
+    <p>background-repeat no repeat repeat-x repeat-y</p>
+    <p>background-position:x y 可以用方向名词和精确单位</p>
+    <p>background-acttachment：scroll/fixed</p>
+    <p>层叠性 样式冲突，遵循的原则是就近原则，哪个样式离结构近,就执行哪个样式</p>
+    <p>继承性 子承父业 行高会继承 font设置字体大小继承不了要用font-size设置</p>
+    <img src="../../images/early/600.jpg" alt="">
+    <p>优先级 一般范围越小越优先 继承的权重为0</p>
+    <div class="ab">1233</div>
+    <p style="border-bottom:10px solid skyblue ; border-collapse: collapse;">border</p>
+    <p>padding上右下左 会撑大盒子</p>
+    <p style="border:10px solid red ">margin 用margin实现水平居中 指定宽度 然后margin：auto或者margin：0 auto</p>
+    <p>通过li list-style：none来消除点</p>
+    <p style="border-radius:30% ;border:10px solid black;">border-radius:可以跟数值或者百分比</p>
+    <p style="box-shadow:1px 1px 1px 1px rgb(119, 106, 106)">box-shadow:h-shadow v-shadow blur spread color
+        inset/outset outset是默认 不能写这个 不然无效</p>
+    <p>标准流 默认</p>
+    <p>浮动 可以让多个块级元素一行内显示 float：left none right</p>
+    <p>漂浮起来 不占位置 加了浮动会有行内块元素的特点</p>
+    <p>为约束浮动元素的位置 经常搭配标准流父级使用 </p>
+    <p>一个盒子中的盒子加了浮动 就要给其他盒子加浮动 浮动的盒子只会影响后面的标准流 不会影响前面的标准流</p>
+    <p>由于父级盒子很多情况下，不方便给高度，但是子盒子浮动又不占有位置，最后父级盒子高度为0时，就会影响下面的标准流盒子。</p>
+    <p>清除浮动之后，父级就会根据浮动的子盒子自动检测高度。父级有了高度，就不会影响下面的标准流了 </p>
+    <p>清除浮动 clear：left both right</p>
+    <p>父级加overflow：hidden auto scroll</p>
+    <p>还有after 伪元素法和双伪元素清除浮动</p>
+    <p>png背景透明</p>
+    <p>建议遵循以下顺序: </p>
+    <p>1.布局定位属性:display / position /float / clear / visibility / overflow(建议display第一个写，毕竟关系到模式)</p>
+    <p>2.自身属性:width/ height / margin/ padding/ border / background</p>
+    <p>3.文本属性:color / font / text-decoration / text-align / vertical-align/white- space / break-word</p>
+    <p>4.其他属性(CSS3 ): content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient...</p>
+    <pre>
+        绝对定位的盒子居中
+        .c {
+        position: absolute;
+        /* 初版 */
+        /* left: 50%;
+        margin-left: -50px;
+        top: 50%;
+        margin-top: -50px; */
+                
+        /* 改进版*/
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+                
+        /* 第三种 */
+        /* left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto; */
+                
+        /* width: 100%;
+        display: flex; */
+        }
+</pre>
+    <p id="study">要好好学习吖</p>
+    <div style="display: flex;align-items: center;">
+        <div style="flex: 2;">1</div>
+        <div style="flex: 2;">2</div>
+        <div style="flex: 1;">3</div>
+    </div>
+    <img src="../../images/好看.png" alt="" id="pic" width="100px" height="100px">
+    <div class="background">
+        <img src="../../images/好看.png" alt="" class="bgimg">
+        <div class="mask"></div>
+        <div class="big">
+            <img src="../../images/好看.png" alt="" class="bigimg">
+        </div>
+
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <script>
+        var studys = document.getElementById('study');
+        console.log(studys);
+        var fonts = document.getElementsByClassName('font');
+        console.log(fonts);
+        // 获得事件源
+        var pone = document.querySelector('img');
+        var spanone = document.querySelector('span');
+        var divone = document.querySelector('div');
+        // 事件类型
+        // pone.onmouseover = function () {
+        //     // 事件处理程序
+        //     alert('黑凤梨');
+        // }
+        spanone.onclick = function () {
+            pone.src = '../../images/early/700.jpg';
+            pone.title = '笔记1';
+        }
+        divone.onclick = function () {
+            pone.src = '../../images/early/600.jpg';
+            pone.title = '笔记2';
+        }
+        console.log(pone);
+        var pall = document.querySelectorAll('p');
+        console.log(pall);
+        for (var i = 1; i <= 5; i++) {
+            console.log('woxihuanhuang');
+        }
+        // 跟随鼠标
+        var pic = document.querySelector('#pic');
+        document.addEventListener('mousemove', function (e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            // console.log(x, y);
+            pic.style.left = x + 'px';
+            pic.style.top = y + 'px';
+        });
+        // 拖动图片
+        var font = document.querySelector('.font');
+        font.addEventListener('mousedown', function (e) {
+            var x = e.pageX - font.offsetLeft;
+            var y = e.pageY - font.offsetTop;
+            document.addEventListener('mousemove', move);
+            function move(e) {
+                font.style.left = e.pageX - x + 'px';
+                font.style.top = e.pageY - y + 'px';
+            }
+            document.addEventListener('mouseup', function (e) {
+                document.removeEventListener('mousemove', move);
+            })
+        });
+        // 放大镜
+        var bg = document.querySelector('.background');
+        var bgimg = document.querySelector('.bgimg');
+        var mask = document.querySelector('.mask')
+        var big = document.querySelector('.big')
+        var bigimg = document.querySelector('.bigimg')
+        bg.addEventListener('mouseover', function () {
+            mask.style.display = 'block';
+            big.style.display = 'block';
+
+        })
+        bg.addEventListener('mouseout', function () {
+            mask.style.display = 'none';
+            big.style.display = 'none';
+        })
+        bg.addEventListener('mousemove', function (e) {
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            var maskX = x - mask.offsetWidth / 2;
+            var maskY = y - mask.offsetHeight / 2;
+            var maskmaxX = bgimg.offsetWidth - mask.offsetWidth;
+            var maskmaxY = bgimg.offsetHeight - mask.offsetHeight;
+            if (maskX <= 0) {
+                maskX = 0;
+            } else if (maskX >= maskmaxX) {
+                maskX = maskmaxX;
+            }
+            if (maskY <= 0) {
+                maskY = 0;
+            } else if (maskY >= maskmaxY) {
+                maskY = maskmaxY;
+            }
+            mask.style.left = maskX + 'px';
+            mask.style.top = maskY + 'px';
+            // big.style.left = maskX + 'px';
+            // big.style.top = maskY + 'px';
+            var bigmaxX = bigimg.offsetWidth - big.offsetWidth;
+            var bigmaxY = bigimg.offsetHeight - big.offsetHeight;
+            var bigX = maskX * bigmaxX / maskmaxX;
+            var bigY = maskY * bigmaxY / maskmaxY;
+            bigimg.style.left = -bigX + 'px';
+            bigimg.style.top = -bigY + 'px';
+        })
+        // 滚动条事件
+        // formTop如果不放外面进行赋值，直接用会不一样
+        //还有log放外面和里面输出结果不一样 很奇怪
+
+        // var form = document.querySelector('form');
+        // var fontTop = font.offsetTop - form.offsetTop;
+        // console.log(font.offsetTop);
+        // console.log(form.offsetTop);
+        // document.addEventListener('scroll', function () {
+        //     if (window.pageYOffset >= form.offsetTop) {
+        //         font.style.position = 'fixed';
+        //         font.style.top = fontTop + 'px';
+        //         console.log(font.offsetTop);
+        //         console.log(form.offsetTop);
+        //     } else {
+        //         font.style.position = 'absolute';
+        //         font.style.top = 600 + 'px';
+        //     }
+        // })
+        var form = document.querySelector('form');
+        var formTop = form.offsetTop;
+        var fontTop = font.offsetTop - formTop;
+        console.log(font.offsetTop);
+        console.log(form.offsetTop);
+        document.addEventListener('scroll', function () {
+            if (window.pageYOffset >= formTop) {
+                font.style.position = 'fixed';
+                font.style.top = fontTop + 'px';
+                // console.log(font.offsetTop);
+                // console.log(form.offsetTop);
+            } else {
+                font.style.position = 'absolute';
+                font.style.top = 600 + 'px';
+            }
+        })
+        font.addEventListener('click', function () {
+            window.scroll(0, 0);
+        })
+    </script>
+</body>
+
+</html>

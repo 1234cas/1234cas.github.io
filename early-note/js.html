@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        button {
+            margin: 5px 0 5px 30px;
+            width: 150px;
+            height: 30px;
+        }
+
+        li {
+            float: left;
+            padding: 0 10px;
+        }
+
+
+        .current {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dinbu">
+        <div class="dinbu"><a href="#dibu">底部</a></div>
+    </div>
+    <div><a href="#dom">DOM</a></div>
+    <div><a href="#bom">BOM</a></div>
+    <div><a href="#移动端">移动端</a></div>
+    <div><a href="#jQuery">jQuery</a></div>
+    <div class="dibu"><a href="#dinbu">顶部</a></div>
+    <div class="mobile"><a href="移动端.html">移动端</a></div>
+    <div class="basic"><a href="基础知识.html">基础知识</a></div>
+    <div class="js"><a href="js.html">JavaScript</a></div>
+    <div class="pink">
+        <a href="https://www.bilibili.com/video/BV1Sy4y1C7ha?t=11&p=319" target="blank">pink老师的课</a>
+    </div>
+    <div class="notice"><a href="notice.html">注意</a></div>
+    <h1>p2</h1>
+    <img src="../images/early/501.jpg" /><br>
+    <h1>p3</h1>
+    <img src="../images/early/502.jpg" /><br>
+    <h1>p7</h1>
+    <img src="../images/early/790.jpg" /><br>
+    <h1>p8</h1>
+    <img src="../images/early/503.jpg" /><br>
+    <img src="../images/early/504.jpg" /><br>
+    <img src="../images/early/505.jpg" /><br>
+    <h1>p9</h1>
+    <p>注释</p>
+    <img src="../images/early/506.jpg" /><br>
+    <h1>p10</h1>
+    <p>输入输出语句 prompt输入的是string类型 log打印结果 dir打印内容</p>
+    <img src="../images/early/507.jpg" /><br>
+    <h1>p12</h1>
+    <p>变量</p>
+    <img src="../images/early/508.jpg" /><br>
+    <img src="../images/early/509.jpg" /><br>
+    <h1>p13</h1>
+    <button class="btn1">输入输出</button><br>
+    <script>
+        var btn1 = document.querySelector('.btn1');
+        btn1.onclick = function () {
+            var myname = prompt('请输入你想输入的信息');
+            alert(myname);
+
+        }
+    </script>
+    <img src="../images/early/510.jpg" /><br>
+    <img src="../images/early/511.jpg" /><br>
+    <img src="../images/early/512.jpg" /><br>
+    <h1>p16</h1>
+    <img src="../images/early/513.jpg" /><br>
+    <img src="../images/early/514.jpg" /><br>
+    <img src="../images/early/515.jpg" /><br>
+    <h1>p17</h1>
+    <button class="btn2">啊这</button><br>
+    <div class="span1">芜湖</div>
+    <div class="span2">起飞</div><br>
+    <script>
+        var btn2 = document.querySelector('.btn2');
+        var span1 = document.querySelector('.span1');
+        var span2 = document.querySelector('.span2');
+        btn2.onclick = function () {
+            var temp;
+            temp = span1.innerHTML;
+            span1.innerHTML = span2.innerText;
+            span2.innerHTML = temp;
+
+        }
+    </script>
+    <img src="../images/early/516.jpg" /><br>
+    <h1>p19</h1>
+    <img src="../images/early/517.jpg" /><br>
+    <h1>p21</h1>
+    <p>变量的数据类型</p>
+    <img src="../images/early/518.jpg" /><br>
+    <h1>p22</h1>
+    <p>数字型Number</p>
+    <img src="../images/early/519.jpg" /><br>
+    <img src="../images/early/520.jpg" /><br>
+    <img src="../images/early/521.jpg" /><br>
+    <img src="../images/early/522.jpg" /><br>
+    <img src="../images/early/523.jpg" /><br>
+    <img src="../images/early/524.jpg" /><br>
+    <h1>p24</h1>
+    <p>字符串型String</p><br>
+    <p>换行用 字符串转义符，字符串引号嵌套 外单内双</p>
+    <img src="../images/early/525.jpg" /><br>
+    <img src="../images/early/526.jpg" /><br>
+    <img src="../images/early/527.jpg" /><br>
+    <h1>p26</h1>
+    <p>length 字符串拼接</p>
+    <p>数值相加 字符相连</p>
+    <img src="../images/early/528.jpg" /><br>
+    <img src="../images/early/529.jpg" /><br>
+    <h1>p27</h1>
+    <p>引引加加</p>
+    <button class="btn3">点击</button><br>
+    <script>
+        var btn3 = document.querySelector('.btn3')
+        btn3.onclick = function () {
+            var age = prompt('你多少岁了呢？');
+            console.log(typeof age);
+            //prompt输入的是string类型，那为什么我下面的可以运行
+            if (isNaN(age) === true || age.length > 3) {
+                alert('gun');
+            } else if (age > 100) {
+                alert('我不信')
+            }
+            else {
+                alert('原来你今年' + age + '岁了啊');
+            }
+        }
+    </script>
+    <img src="../images/early/530.jpg" /><br>
+    <h1>p29</h1>
+    <p>布尔型Boolean</p><br>
+    <p>Undefined 和 Null</p>
+    <img src="../images/early/531.jpg" /><br>
+    <img src="../images/early/532.jpg" /><br>
+    <h1>p30</h1>
+    <p>typeof</p>
+    <img src="../images/early/791.jpg" /><br>
+    <h1>p31</h1>
+    <img src="../images/early/533.jpg" /><br>
+    <h1>p32</h1>
+    <p>转换数据类型</p>
+    <p>使用表单、prompt获取过来的数据默认是字符串类型的 </p>
+    <img src="../images/early/534.jpg" /><br>
+    <h1>p34</h1>
+    <button class="btn4">算年龄</button>
+    <button class="btn5">做加法</button><br>
+    <script>
+        var btn4 = document.querySelector('.btn4')
+        btn4.onclick = function () {
+            var birthday = prompt('请输入你的出生年份');
+            var age = 2021 - birthday
+            alert('你今年' + age + '岁了')
+        }
+        var btn5 = document.querySelector('.btn5')
+        btn5.onclick = function () {
+            var num1 = prompt('请输入第一个数');
+            var num2 = prompt('请输入第二个数');
+            var result = parseFloat(num1) + parseFloat(num2);
+            alert('结果是' + result)
+        }
+    </script>
+    <img src="../images/early/535.jpg" /><br>
+    <img src="../images/early/792.jpg" /><br>
+    <h1>p37</h1>
+    <img src="../images/early/536.jpg" /><br>
+    <h1>p38</h1>
+    <img src="../images/early/793.jpg" /><br>
+    <img src="../images/early/537.jpg" /><br>
+    <h1>p42</h1>
+    <p>算术运算符</p>
+    <p>浮点数有精度问题</p>
+    <img src="../images/early/538.jpg" /><br>
+    <img src="../images/early/539.jpg" /><br>
+    <img src="../images/early/794.jpg" /><br>
+    <h1>p43</h1>
+    <img src="../images/early/540.jpg" /><br>
+    <img src="../images/early/795.jpg" /><br>
+    <h1>p44</h1>
+    <img src="../images/early/541.jpg" /><br>
+    <img src="../images/early/542.jpg" /><br>
+    <h1>p44</h1>
+    <p>递增递减++--</p>
+    <img src="../images/early/543.jpg" /><br>
+    <h1>p46</h1>
+    <img src="../images/early/544.jpg" /><br>
+    <h1>p47</h1>
+    <img src="../images/early/545.jpg" /><br>
+    <h1>p48</h1>
+    <p>比较运算符</p>
+    <img src="../images/early/546.jpg" /><br>
+    <img src="../images/early/547.jpg" /><br>
+    <h1>p49</h1>
+    <p>逻辑运算符</p>
+    <img src="../images/early/548.jpg" /><br>
+    <img src="../images/early/549.jpg" /><br>
+    <img src="../images/early/550.jpg" /><br>
+    <h1>p51</h1>
+    <p>逻辑中断很重要 会影响运行结果 逻辑中断会让一些不运算</p>
+    <img src="../images/early/551.jpg" /><br>
+    <h1>p52</h1>
+    <img src="../images/early/552.jpg" /><br>
+    <img src="../images/early/796.jpg" /><br>
+    <img src="../images/early/553.jpg" /><br>
+    <h1>p53</h1>
+    <img src="../images/early/554.jpg" /><br>
+    <h1>p54</h1>
+    <p>因为逻辑运算符的优先级低，所以根据逻辑运算符来分开来运算</p>
+    <img src="../images/early/555.jpg" /><br>
+    <h1>p56</h1>
+    <img src="../images/early/556.jpg" /><br>
+    <h1>p57</h1>
+    <p>if</p>
+    <img src="../images/early/557.jpg" /><br>
+    <img src="../images/early/558.jpg" /><br>
+    <img src="../images/early/559.jpg" /><br>
+    <h1>p59</h1>
+    <p>if else</p>
+    <img src="../images/early/560.jpg" /><br>
+    <img src="../images/early/561.jpg" /><br>
+    <button class="btn6">中奖查询</button>
+    <script>
+        var btn6 = document.querySelector('.btn6');
+        btn6.onclick = function () {
+            var myname = prompt('请输入信息');
+            if (myname === 'lzt') {
+                alert('哇哦你中奖了✌')
+            } else {
+                alert('你也配？')
+            }
+
+        }
+    </script>
+    <h1>p61</h1>
+    <p>if else if</p>
+    <img src="../images/early/562.jpg" /><br>
+    <img src="../images/early/563.jpg" /><br>
+    <img src="../images/early/564.jpg" /><br>
+    <h1>p63</h1>
+    <p>经常把三元表达式赋值给一个变量 </p>
+    <p>var result =num > 5?'是的':'不是的';</p>
+    <img src="../images/early/565.jpg" /><br>
+    <img src="../images/early/797.jpg" /><br>
+    <h1>p65</h1>
+    <p>switch</p>
+    <button class="btn7">查游戏</button><br>
+    <script>
+        var btn7 = document.querySelector('.btn7');
+        btn7.onclick = function () {
+            var game = prompt('请输入游戏名字');
+            switch (game) {
+                case '英雄联盟':
+                    alert('就那样吧 折磨自己');
+                    break;
+                case 'csgo':
+                    alert('快乐白给');
+                    break;
+                default:
+                    alert('抱歉，暂时没用相关数据呢亲');
+                    break;
+            }
+        }
+    </script>
+    <img src="../images/early/566.jpg" /><br>
+    <img src="../images/early/567.jpg" /><br>
+    <h1>p68</h1>
+    <img src="../images/early/568.jpg" /><br>
+    <h1>p71</h1>
+    <p>for循环</p>
+    <img src="../images/early/569.jpg" /><br>
+    <h1>p72</h1>
+    <img src="../images/early/570.jpg" /><br>
+    <h1>p73</h1>
+    <p>断点</p>
+    <img src="../images/early/571.jpg" /><br>
+    <h1>p81</h1>
+    <button class="btn8">打印⭐</button>
+    <button class="btn9">打印乘法口诀</button><br>
+    <script>
+        var btn8 = document.querySelector('.btn8');
+        var str = '';
+        btn8.onclick = function () {
+            var rows = parseInt(prompt('想打印的⭐行数'));
+            for (var i = 1; i <= rows; i++) {
+                for (var j = 1; j <= rows; j++) {
+                    //var j = 1 ; j <= i是正三角形
+                    //var j = i ; j <= rows是倒三角形
+                    str = str + '⭐';
+                }
+                str += '\n';
+            }
+            alert(str);
+            str = '';
+        }
+        var btn9 = document.querySelector('.btn9');
+        var form = '';
+        btn9.onclick = function () {
+            var rows = parseInt(prompt('想打印的行数 9以内哦'));
+            if (rows <= 9) {
+                for (var i = 1; i <= rows; i++) {
+                    for (var j = 1; j <= i; j++) {
+                        form += j + '×' + i + '=' + i * j + '  ';
+                    }
+
+                    form += '\n';
+                }
+                alert(form);
+                form = '';
+            } else {
+                alert('别搞嗷');
+            }
+        }
+    </script>
+    <img src="../images/early/572.jpg" /><br>
+    <h1>p86</h1>
+    <img src="../images/early/573.jpg" /><br>
+    <h1>p87</h1>
+    <p>while</p>
+    <button class="btn10">测试智商</button>
+    <button class="btn11">银行业务</button><br>
+    <script>
+        var btn10 = document.querySelector('.btn10');
+        // btn10.onclick = function () {
+        //     var fool = prompt('你是傻瓜吗？');
+        //     while (fool !== '是') {
+        //         var fool = prompt('你是傻瓜吗？');
+        //     }
+        //     alert('还真是hh');
+        // }
+        btn10.onclick = function () {
+            do { var fool = prompt('你是傻瓜吗？'); }
+            while (fool !== '是')
+
+            alert('还真是hh');
+        }
+        var btn11 = document.querySelector('.btn11');
+        var deposit = 100;
+        btn11.onclick = function () {
+
+            var num = parseInt(prompt('请输入您要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出'));
+            switch (num) {
+                case 1:
+                    deposit += parseInt(prompt('请输入您要存的金额'));
+                    alert('现在您还有' + deposit + '元');
+                    prompt('请输入您要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出')
+                    break;
+                case 2:
+                    deposit -= parseInt(prompt('请输入您要取的金额'));
+                    alert('现在您还有' + deposit + '元');
+                    prompt('请输入您要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出')
+                    break;
+                case 3:
+                    alert('现在您还有' + deposit + '元');
+                    prompt('请输入您要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出')
+                    break;
+                case 4:
+                    alert('正在退出呢');
+                    break;
+                default:
+                    alert('抱歉，暂时没用相关功能呢亲');
+                    break;
+            }
+        }
+    </script>
+    <img src="../images/early/574.jpg" /><br>
+    <img src="../images/early/575.jpg" /><br>
+    <h1>p89</h1>
+    <p>do while</p>
+    <img src="../images/early/576.jpg" /><br>
+    <h1>p91</h1>
+    <img src="../images/early/577.jpg" /><br>
+    <h1>p92</h1>
+    <p>continue</p>
+    <img src="../images/early/578.jpg" /><br>
+    <img src="../images/early/579.jpg" /><br>
+    <h1>p93</h1>
+    <p>break</p>
+    <img src="../images/early/580.jpg" /><br>
+    <h1>p94</h1>
+    <p>命名规范</p>
+    <img src="../images/early/581.jpg" /><br>
+    <img src="../images/early/582.jpg" /><br>
+    <img src="../images/early/583.jpg" /><br>
+    <img src="../images/early/584.jpg" /><br>
+    <h1>p97</h1>
+    <p>数组 创建数组 里面也可以放多个对象</p>
+    <img src="../images/early/585.jpg" /><br>
+    <img src="../images/early/586.jpg" /><br>
+    <img src="../images/early/587.jpg" /><br>
+    <h1>p98</h1>
+    <img src="../images/early/588.jpg" /><br>
+    <h1>p99</h1>
+    <p>遍历</p>
+    <img src="../images/early/589.jpg" /><br>
+    <h1>p100</h1>
+    <p>数组长度</p>
+    <img src="../images/early/590.jpg" /><br>
+    <h1>p103</h1>
+    <p>声明变量，加变量就不用修改循环里的代码 可以直接修改var的就行了</p>
+    <img src="../images/early/591.jpg" /><br>
+    <h1>p104</h1>
+    <p>通过修改length来新增数组元素</p>
+    <img src="../images/early/592.jpg" /><br>
+    <img src="../images/early/798.jpg" /><br>
+    <h1>p106</h1>
+    <p>筛选数组 空数组的length为0可以当索引号来添加元素</p>
+    <p>newArr[newArr.length]=arr[i];可以改成newArr.push(arr[i])</p>
+    <img src="../images/early/593.jpg" /><br>
+    <img src="../images/early/594.jpg" /><br>
+    <h1>p109</h1>
+    <p>翻转数组</p>
+    <img src="../images/early/595.jpg" /><br>
+    <h1>p112</h1>
+    <p>排序</p>
+    <button class="btn12">冒泡排序</button><br>
+    <script>
+        var btn12 = document.querySelector('.btn12');
+        var bbb = function () {
+            // var j = i; j <= rows
+            var reverse = prompt('1').split(',');
+            for (var i = 0; i < reverse.length; i++) {
+                for (var j = i; j < reverse.length; j++) {
+                    if (reverse[j] > reverse[j + 1]) {
+                        var temp = reverse[j];
+                        reverse[j] = reverse[j + 1];
+                        reverse[j + 1] = temp;
+                    }
+                }
+            }
+            alert(reverse);
+            // var arr = [];
+            // for (var i = 0; i < reverse.length; i++) {
+            //     arr[i] = reverse[i];
+            // }
+            // return arr;
+        }
+        btn12.onclick = function () {
+            bbb();
+        };
+
+
+        // prompt取得的值是string，给不了数组，这个问题就是我无法从输入框给数组值
+
+        // var btn12 = document.querySelector('.btn12');
+        // var arr = [2, 4, 23, 12];
+        // btn12.onclick = function () {
+        //     // var j = i; j <= rows
+        //     for (var i = 0; i < arr.length; i++) {
+        //         for (var j = i; j < arr.length; j++) {
+        //             if (arr[j] > arr[j + 1]) {
+        //                 var temp = arr[j];
+        //                 arr[j] = arr[j + 1];
+        //                 arr[j + 1] = temp;
+        //             }
+        //         }
+        //     }
+        //     alert(arr);
+        // }
+
+        // function get666() {
+        //     return 666;
+        // }
+        // var re = get666();
+        // console.log(get666());
+        // console.log(re);
+    </script>
+    <img src="../images/early/596.jpg" /><br>
+    <h1>p115</h1>
+    <p>函数</p>
+    <img src="../images/early/597.jpg" /><br>
+    <img src="../images/early/598.jpg" /><br>
+    <h1>p117</h1>
+    <p>形参实参</p>
+    <img src="../images/early/599.jpg" /><br>
+    <img src="../images/early/600.jpg" /><br>
+    <h1>p119</h1>
+    <img src="../images/early/601.jpg" /><br>
+    <img src="../images/early/602.jpg" /><br>
+    <h1>p120</h1>
+    <p>return</p>
+    <img src="../images/early/603.jpg" /><br>
+    <h1>p122</h1>
+    <p>利用函数求数组中的最大值</p>
+    <img src="../images/early/604.jpg" /><br>
+    <h1>p123</h1>
+    <p>return 可以利用数组来解决</p>
+    <img src="../images/early/605.jpg" /><br>
+    <img src="../images/early/606.jpg" /><br>
+    <img src="../images/early/607.jpg" /><br>
+    <h1>p124</h1>
+    <img src="../images/early/608.jpg" /><br>
+    <img src="../images/early/609.jpg" /><br>
+    <h1>p126</h1>
+    <p>arguments</p>
+    <img src="../images/early/610.jpg" /><br>
+    <img src="../images/early/611.jpg" /><br>
+    <h1>p131</h1>
+    <p>函数相互调用</p>
+    <img src="../images/early/612.jpg" /><br>
+    <h1>p133</h1>
+    <img src="../images/early/613.jpg" /><br>
+    <h1>p135</h1>
+    <img src="../images/early/614.jpg" /><br>
+    <h1>p136</h1>
+    <img src="../images/early/615.jpg" /><br>
+    <img src="../images/early/616.jpg" /><br>
+    <img src="../images/early/617.jpg" /><br>
+    <h1>p138</h1>
+    <p>就近原则</p>
+    <img src="../images/early/618.jpg" /><br>
+    <h1>141</h1>
+    <p>预解析</p>
+    <p>函数提升即把一整个函数提到前面</p>
+    <img src="../images/early/619.jpg" /><br>
+    <h1>p142</h1>
+    <img src="../images/early/620.jpg" /><br>
+    <h1>p144</h1>
+    <p>对象 对象的方法本身就是动作是方法 不用console.log输出</p>
+    <img src="../images/early/621.jpg" /><br>
+    <img src="../images/early/622.jpg" /><br>
+    <h1>p145</h1>
+    <img src="../images/early/623.jpg" /><br>
+    <img src="../images/early/624.jpg" /><br>
+    <img src="../images/early/625.jpg" /><br>
+    <h1>p146</h1>
+    <p>变量、属性、函数、方法总结</p>
+    <script>
+        var people = {
+            uname: 'azhe',
+            sex: '',
+            act: function () {
+                console.log('noooooo');
+            }
+        }
+        console.log(people.uname);
+        people.act();
+        var obj = new Object();
+        obj.name = '233';
+        obj.sex = '保密';
+        obj.act = function () {
+            console.log('娃哈哈');
+        }
+        console.log(obj['name']);
+        obj.act();
+    </script>
+    <img src="../images/early/626.jpg" /><br>
+    <h1>p147</h1>
+    <p>new Object</p>
+    <img src="../images/early/627.jpg" /><br>
+    <h1>p148</h1>
+    <p>构造函数</p>
+    <img src="../images/early/628.jpg" /><br>
+    <img src="../images/early/629.jpg" /><br>
+    <h1>p149</h1>
+    <img src="../images/early/630.jpg" /><br>
+    <img src="../images/early/631.jpg" /><br>
+    <script>
+        function Target(uname, detail, time) {
+            this.name = uname;
+            this.detail = detail;
+            this.time = time;
+            this.act = function () {
+                console.log('加油啊');
+            }
+        }
+        var english = new Target('english', '学英语', 'june');
+        console.log(english.name);
+        english.act();
+        for (var k in english) {
+            console.log(k);
+            console.log(english[k]);
+        }
+    </script>
+    <h1>p151</h1>
+    <img src="../images/early/632.jpg" /><br>
+    <h1>p152</h1>
+    <img src="../images/early/633.jpg" /><br>
+    <h1>p153</h1>
+    <p>遍历对象 forin</p>
+    <img src="../images/early/634.jpg" /><br>
+    <h1>p154</h1>
+    <img src="../images/early/635.jpg" /><br>
+    <h1>p156</h1>
+    <img src="../images/early/636.jpg" /><br>
+    <h1>p158</h1>
+    <p>math</p>
+    <img src="../images/early/637.jpg" /><br>
+    <h1>p159</h1>
+    <img src="../images/early/638.jpg" /><br>
+    <h1>p160</h1>
+    <img src="../images/early/639.jpg" /><br>
+    <img src="../images/early/640.jpg" /><br>
+    <h1>p161</h1>
+    <button class="btn13">猜数字</button><br>
+    <script>
+        var btn13 = document.querySelector('.btn13');
+        function getRandom(min, max) {
+            min = Math.floor(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        btn13.onclick = function () {
+            var random = getRandom(1, 9);
+            for (var i = 1; i <= 3; i++) {
+                var num = prompt('你来猜?输入1~9之间的一个数字,只能猜3次哦');
+                if (num > random) {
+                    alert('你猜大了');
+                } else if (num < random) {
+                    alert('你猜小了');
+                } else {
+                    alert('你好帅哦，猜对了');
+                    break;
+                }
+            }
+            // while (true) {
+            //     var num = prompt('你来猜?输入1~10之间的一个数字');
+            //     if (num > random) {
+            //         alert('你猜大了');
+            //     } else if (num < random) {
+            //         alert('你猜小了');
+            //     } else {
+            //         alert('你好帅哦，猜对了');
+            //         break;
+            //     }
+            // }
+        }
+
+    </script>
+    <img src="../images/early/641.jpg" /><br>
+    <h1>p163</h1>
+    <p>date</p>
+    <script>
+        var getTime1 = function () {
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = time.getMonth() + 1;
+            var dates = time.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = time.getDay();
+            var hour = time.getHours();
+            var minute = time.getMinutes();
+            var second = time.getSeconds();
+            return ('今天是:' + year + '年' + month + '月' + dates + '日 ' + arr[day] + hour + '时' + minute + '分' + second + '秒');
+        }
+        var getTime2 = function () {
+            var time = new Date();
+            var h = time.getHours();
+            h = h < 10 ? '0' + h : h;
+            var m = time.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = time.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return h + ' : ' + m + ' : ' + s;
+        }
+        console.log(getTime1());
+        console.log(getTime2());
+    </script>
+    <img src="../images/early/642.jpg" /><br>
+    <h1>p164</h1>
+    <img src="../images/early/643.jpg" /><br>
+    <h1>p165</h1>
+    <img src="../images/early/644.jpg" /><br>
+    <h1>p166</h1>
+    <img src="../images/early/645.jpg" /><br>
+    <h1>p167</h1>
+    <script>
+
+        function countDown(time) {
+            var nowTime = +new Date();
+            var inputTime = +new Date(time);
+            var times = (inputTime - nowTime) / 1000;
+            var d = parseInt(times / 60 / 60 / 24);
+            d = d < 10 ? '0' + d : d;
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            var s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;
+            return d + '天' + h + '时' + m + '分' + s + '秒';
+        }
+        console.log(countDown('2021-6-12'));
+    </script>
+    <img src="../images/early/646.jpg" /><br>
+    <img src="../images/early/647.jpg" /><br>
+    <h1>p169</h1>
+    <p>数组</p>
+    <img src="../images/early/648.jpg" /><br>
+    <h1>p170</h1>
+    <img src="../images/early/649.jpg" /><br>
+    <h1>p171</h1>
+    <img src="../images/early/650.jpg" /><br>
+    <img src="../images/early/799.jpg" /><br>
+    <img src="../images/early/800.jpg" /><br>
+    <h1>p174</h1>
+    <p>数组排序reverse sort</p>
+    <img src="../images/early/651.jpg" /><br>
+    <img src="../images/early/652.jpg" /><br>
+    <h1>p175</h1>
+    <img src="../images/early/653.jpg" /><br>
+    <img src="../images/early/654.jpg" /><br>
+    <h1>p176</h1>
+    <img src="../images/early/655.jpg" /><br>
+    <h1>p177</h1>
+    <p>数组转字符串</p>
+    <img src="../images/early/656.jpg" /><br>
+    <img src="../images/early/657.jpg" /><br>
+    <h1>p178</h1>
+    <img src="../images/early/658.jpg" /><br>
+    <h1>p179</h1>
+    <p>字符串不可变性</p>
+    <img src="../images/early/659.jpg" /><br>
+    <h1>p180</h1>
+    <p>字符串方法</p>
+    <img src="../images/early/660.jpg" /><br>
+    <h1>p181</h1>
+    <script>
+        var arr = ['hh', 'ww', 'zz', '66', 'zz'];
+        var index = arr.indexOf('zz');
+        var num = 0;
+        while (index !== -1) {
+            console.log(index);
+            num++;
+            index = arr.indexOf('zz', index + 1);
+        }
+        var str1 = 'abcoefoxyozzopp';
+        var o = {};
+        for (var i = 0; i < str1.length; i++) {
+            var chars = str1.charAt(i);
+            if (o[chars]) {
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        var oo = {};
+        for (var i = 0; i < str1.length; i++) {
+            var chars = str1.charAt(i);
+            if (oo.chars) {
+                oo.chars++;
+            } else {
+                oo.chars = 1;
+            }
+        }
+        console.log(o);
+        console.log(oo);
+    </script>
+    <img src="../images/early/661.jpg" /><br>
+    <h1>p182</h1>
+    <img src="../images/early/662.jpg" /><br>
+    <img src="../images/early/663.jpg" /><br>
+    <h1>p183</h1>
+    <p>这的o[chars]不能用o.chars 不是很懂为什么</p>
+    <img src="../images/early/664.jpg" /><br>
+    <img src="../images/early/665.jpg" /><br>
+    <h1>p185</h1>
+    <img src="../images/early/666.jpg" /><br>
+    <h1>p186</h1>
+    <p>替换replace 字符串转数组split</p>
+    <img src="../images/early/667.jpg" /><br>
+    <img src="../images/early/668.jpg" /><br>
+    <h1>p188</h1>
+    <img src="../images/early/669.jpg" /><br>
+    <img src="../images/early/670.jpg" /><br>
+    <img src="../images/early/671.jpg" /><br>
+    <h1>p189</h1>
+    <img src="../images/early/672.jpg" /><br>
+    <h1>p190</h1>
+    <p>复杂数据类型传参</p>
+    <img src="../images/early/js1.jpg" /><br>
+    <h1>p192</h1>
+    <img src="../images/early/673.jpg" /><br>
+    <h1>p193</h1>
+    <img src="../images/early/674.jpg" /><br>
+    <img src="../images/early/675.jpg" /><br>
+    <img src="../images/early/676.jpg" /><br>
+    <h1>p195</h1>
+    <p id='dom'>DOM</p>
+    <img src="../images/early/677.jpg" /><br>
+    <h1>p196</h1>
+    <p>获得元素 dom返回的都是object</p>
+    <img src="../images/early/678.jpg" /><br>
+    <h1>p197</h1>
+    <img src="../images/early/679.jpg" /><br>
+    <h1>p198</h1>
+    <p>获取元素query</p>
+    <img src="../images/early/680.jpg" /><br>
+    <h1>p199</h1>
+    <img src="../images/early/681.jpg" /><br>
+    <h1>p200</h1>
+    <p>也可以不写事件类型即直接触发事件</p>
+    <img src="../images/early/682.jpg" /><br>
+    <h1>p201</h1>
+    <p>鼠标事件</p>
+    <img src="../images/early/683.jpg" /><br>
+    <img src="../images/early/684.jpg" /><br>
+    <h1>p202</h1>
+    <button class="btn14">点击显示系统时间</button><br>
+    <img src="../images/early/685.jpg" /><br>
+    <img src="../images/early/686.jpg" /><br>
+    <script>
+        var btn14 = document.querySelector('.btn14');
+        btn14.onclick = function () {
+            btn14.innerHTML = getTime1();
+            this.disabled = true;
+        }
+        var getTime1 = function () {
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = time.getMonth() + 1;
+            var dates = time.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = time.getDay();
+            var hour = time.getHours();
+            var minute = time.getMinutes();
+            var second = time.getSeconds();
+            return ('今天是:' + year + '年' + month + '月' + dates + '日 ' + arr[day] + hour + '时' + minute + '分' + second + '秒');
+        }
+    </script>
+    <h1>p203</h1>
+    <p>改变元素内容 innerText就是文本内容 innerHTML就是html的所有内容 innerHTML用的比较多</p>
+    <img src="../images/early/687.jpg" /><br>
+    <img src="../images/early/688.jpg" /><br>
+    <h1>p204</h1>
+    <img src="../images/early/689.jpg" /><br>
+    <img src="../images/early/801.jpg" /><br>
+    <h1>p206</h1>
+    <img src="../images/early/690.jpg" /><br>
+    <h1>p208</h1>
+    <img src="../images/early/691.jpg" /><br>
+    <h1>p209</h1>
+    <p>获得元素属性element.style element.className</p>
+    <img src="../images/early/692.jpg" /><br>
+    <h1>p211</h1>
+    <p>精灵图</p>
+    <img src="../images/early/693.jpg" /><br>
+    <h1>p212</h1>
+    <img src="../images/early/694.jpg" /><br>
+    <h1>p213</h1>
+    <img src="../images/early/695.jpg" /><br>
+    <h1>p214</h1>
+    <img src="../images/early/696.jpg" /><br>
+    <h1>p215</h1>
+    <img src="../images/early/697.jpg" /><br>
+    <h1>p216</h1>
+    <p>排他 循环注册</p>
+    <p>获取元素得到是伪元素 所以可以btn[i]</p>
+    <img src="../images/early/698.jpg" /><br>
+    <img src="../images/early/699.jpg" /><br>
+    <h1>p217</h1>
+    <p>注意这个this.src 引引加加</p>
+    <img src="../images/early/700.jpg" /><br>
+    <h1>p218</h1>
+    <img src="../images/early/701.jpg" /><br>
+    <h1>p219</h1>
+    <p>下次想用两次query可以直接再选择器里面叠加即td>input</p>
+    <table>
+        <tbody>
+            <tr>
+                <th>全选<input type="checkbox" checked></th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var th = document.querySelector('th').querySelector('input');
+        var inputs = document.querySelectorAll('td>input');
+        th.onclick = function () {
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = this.checked;
+            }
+        }
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = function () {
+                var flag = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (!inputs[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                th.checked = flag;
+            }
+        }
+    </script>
+    <img src="../images/early/702.jpg" /><br>
+    <img src="../images/early/703.jpg" /><br>
+    <h1>p221</h1>
+    <p>自定义属性</p>
+    <img src="../images/early/704.jpg" /><br>
+    <h1>p222</h1>
+    <img src="../images/early/705.jpg" /><br>
+    <img src="../images/early/706.jpg" /><br>
+    <img src="../images/early/707.jpg" /><br>
+    <h1>p225</h1>
+    <p>通过获得对应索引号来操控对应元素</p>
+    <nav>
+        <ul>
+            <li>index</li>
+            <li>game</li>
+            <li>video</li>
+            <li>study</li>
+            <li>life</li>
+        </ul><br>
+        <div>首页</div>
+        <div>游戏</div>
+        <div>影视</div>
+        <div>学习</div>
+        <div>生活</div>
+    </nav>
+    <script>
+        var lis = document.querySelectorAll('nav>ul>li');
+        var divs = document.querySelectorAll('nav>div');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function () {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'current';
+                //通过获得对应索引号来操控对应元素
+                var index = this.getAttribute('index');
+                for (var i = 0; i < divs.length; i++) {
+                    divs[i].style.display = 'none';
+                }
+                divs[index].style.display = 'block';
+            }
+        }
+    </script>
+    <img src="../images/early/708.jpg" /><br>
+    <img src="../images/early/709.jpg" /><br>
+    <img src="../images/early/710.jpg" /><br>
+    <img src="../images/early/711.jpg" /><br>
+    <h1>p226</h1>
+    <p>驼峰</p>
+    <img src="../images/early/712.jpg" /><br>
+    <img src="../images/early/713.jpg" /><br>
+    <img src="../images/early/714.jpg" /><br>
+    <h1>p227</h1>
+    <p>节点</p>
+    <img src="../images/early/715.jpg" /><br>
+    <img src="../images/early/716.jpg" /><br>
+    <img src="../images/early/717.jpg" /><br>
+    <h1>p228</h1>
+    <p>父子节点</p>
+    <img src="../images/early/718.jpg" /><br>
+    <h1>p229</h1>
+    <img src="../images/early/719.jpg" /><br>
+    <img src="../images/early/720.jpg" /><br>
+    <h1>p230</h1>
+    <img src="../images/early/721.jpg" /><br>
+    <img src="../images/early/722.jpg" /><br>
+    <img src="../images/early/723.jpg" /><br>
+    <h1>p231</h1>
+    <img src="../images/early/724.jpg" /><br>
+    <h1>p232</h1>
+    <p>兄弟节点</p>
+    <img src="../images/early/725.jpg" /><br>
+    <img src="../images/early/726.jpg" /><br>
+    <img src="../images/early/727.jpg" /><br>
+    <h1>p233</h1>
+    <img src="../images/early/728.jpg" /><br>
+    <h1>p234</h1>
+    <img src="../images/early/729.jpg" /><br>
+    <h1>p235</h1>
+    <img src="../images/early/730.jpg" /><br>
+    <h1>p236</h1>
+    <img src="../images/early/731.jpg" /><br>
+    <h1>p237</h1>
+    <img src="../images/early/732.jpg" /><br>
+    <h1>p238</h1>
+    <P>表格加数据</P>
+    <img src="../images/early/809.jpg" /><br>
+    <img src="../images/early/810.jpg" /><br>
+    <img src="../images/early/811.jpg" /><br>
+    <img src="../images/early/812.jpg" /><br>
+    <script>
+        var www = {
+            sex: 'www',
+            hobby: 'w',
+        }
+        for (var k in www) {
+            console.log(k);
+        }
+    </script>
+    <h1>p244</h1>
+    <p>创建元素</p>
+    <img src="../images/early/733.jpg" /><br>
+    <h1>p246</h1>
+    <p>dom重点 总结</p>
+    <img src="../images/early/802.jpg" /><br>
+    <img src="../images/early/803.jpg" /><br>
+    <img src="../images/early/804.jpg" /><br>
+    <img src="../images/early/805.jpg" /><br>
+    <img src="../images/early/806.jpg" /><br>
+    <img src="../images/early/807.jpg" /><br>
+    <img src="../images/early/808.jpg" /><br>
+    <h1>p248</h1>
+    <p>注册事件监听事件</p>
+    <img src="../images/early/734.jpg" /><br>
+    <img src="../images/early/735.jpg" /><br>
+    <img src="../images/early/736.jpg" /><br>
+    <h1>p250</h1>
+    <p>不要写匿名函数 在外面写函数 在remove里面写函数名即可</p>
+    <img src="../images/early/737.jpg" /><br>
+    <h1>p251</h1>
+    <p>事件冒泡</p>
+    <img src="../images/early/738.jpg" /><br>
+    <img src="../images/early/739.jpg" /><br>
+    <h1>p252</h1>
+    <img src="../images/early/740.jpg" /><br>
+    <h1>p253</h1>
+    <p>事件对象</p>
+    <img src="../images/early/741.jpg" /><br>
+    <img src="../images/early/742.jpg" /><br>
+    <img src="../images/early/743.jpg" /><br>
+    <h1>p254</h1>
+    <img src="../images/early/744.jpg" /><br>
+    <h1>p255</h1>
+    <p>事件对象的属性和方法 总结</p>
+    <img src="../images/early/745.jpg" /><br>
+    <img src="../images/early/746.jpg" /><br>
+    <h1>p256</h1>
+    <p>阻止事件冒泡</p>
+    <img src="../images/early/747.jpg" /><br>
+    <img src="../images/early/748.jpg" /><br>
+    <h1>p257</h1>
+    <p>事件委托就是利用事件冒泡点击儿子 触发父亲</p>
+    <img src="../images/early/749.jpg" /><br>
+    <img src="../images/early/750.jpg" /><br>
+    <h1>p258</h1>
+    <p>鼠标事件</p>
+    <img src="../images/early/751.jpg" /><br>
+    <img src="../images/early/752.jpg" /><br>
+    <h1>p259</h1>
+    <p>鼠标事件对象</p>
+    <img src="../images/early/753.jpg" /><br>
+    <h1>p261</h1>
+    <p>键盘事件</p>
+    <img src="../images/early/754.jpg" /><br>
+    <h1>p262</h1>
+    <img src="../images/early/755.jpg" /><br>
+    <h1>p263</h1>
+    <img src="../images/early/756.jpg" /><br>
+    <h1>p265</h1>
+    <img src="../images/early/813.jpg" /><br>
+    <img src="../images/early/814.jpg" /><br>
+    <h1>p267</h1>
+    <p id='bom'>bom</p>
+    <img src="../images/early/757.jpg" /><br>
+    <img src="../images/early/758.jpg" /><br>
+    <img src="../images/early/759.jpg" /><br>
+    <h1>p268</h1>
+    <p>窗口加载事件</p>
+    <img src="../images/early/760.jpg" /><br>
+    <img src="../images/early/761.jpg" /><br>
+    <h1>p269</h1>
+    <p>调整窗口大小</p>
+    <img src="../images/early/762.jpg" /><br>
+    <h1>p270</h1>
+    <p>定时器</p>
+    <img src="../images/early/763.jpg" /><br>
+    <img src="../images/early/764.jpg" /><br>
+    <h1>p272</h1>
+    <img src="../images/early/765.jpg" /><br>
+    <h1>p273</h1>
+    <img src="../images/early/766.jpg" /><br>
+    <h1>p275</h1>
+    <img src="../images/early/767.jpg" /><br>
+    <h1>p276</h1>
+    <img src="../images/early/768.jpg" /><br>
+    <h1>p277</h1>
+    <p>this</p>
+    <img src="../images/early/815.jpg" /><br>
+    <h1>p278</h1>
+    <p>同步异步</p>
+    <img src="../images/early/769.jpg" /><br>
+    <h1>p279</h1>
+    <img src="../images/early/770.jpg" /><br>
+    <img src="../images/early/771.jpg" /><br>
+    <h1>p280</h1>
+    <img src="../images/early/772.jpg" /><br>
+    <h1>p281</h1>
+    <p>location</p>
+    <img src="../images/early/773.jpg" /><br>
+    <img src="../images/early/774.jpg" /><br>
+    <h1>p282</h1>
+    <img src="../images/early/775.jpg" /><br>
+    <h1>p283</h1>
+    <img src="../images/early/776.jpg" /><br>
+    <h1>p284</h1>
+    <p>location对象</p>
+    <img src="../images/early/777.jpg" /><br>
+    <h1>p285</h1>
+    <p>navigator</p>
+    <img src="../images/early/778.jpg" /><br>
+    <h1>p286</h1>
+    <p>history</p>
+    <img src="../images/early/779.jpg" /><br>
+    <h1>p288</h1>
+    <p>offset</p>
+    <img src="../images/early/780.jpg" /><br>
+    <h1>p290</h1>
+    <img src="../images/early/781.jpg" /><br>
+    <h1>p292</h1>
+    <p>模态框</p>
+    <img src="../images/early/816.jpg" /><br>
+    <img src="../images/early/817.jpg" /><br>
+    <h1>p295</h1>
+    <p>放大镜</p>
+    <img src="../images/early/818.jpg" /><br>
+    <img src="../images/early/819.jpg" /><br>
+    <h1>p300</h1>
+    <p>client</p>
+    <img src="../images/early/782.jpg" /><br>
+    <h1>p301</h1>
+    <p>多个立即执行函数要加分号隔开</p>
+    <p>淘宝flexible.js源码分析</p>
+    <img src="../images/early/783.jpg" /><br>
+    <img src="../images/early/784.jpg" /><br>
+    <h1>p304</h1>
+    <p>scroll</p>
+    <img src="../images/early/785.jpg" /><br>
+    <h1>p305</h1>
+    <p>滚动条案例 兼容性问题</p>
+    <img src="../images/early/820.jpg" /><br>
+    <img src="../images/early/821.jpg" /><br>
+    <h1>p307</h1>
+    <img src="../images/early/786.jpg" /><br>
+    <img src="../images/early/787.jpg" /><br>
+    <h1>p308</h1>
+    <p>mouseenter</p>
+    <img src="../images/early/788.jpg" /><br>
+    <h1>p311</h1>
+    <p>动画</p>
+    <p>把var time改成obj.time 给不同的元素不同的定时器</p>
+    <img src="../images/early/789.jpg" /><br>
+    <h1>p312</h1>
+    <img src="../images/early/822.jpg" /><br>
+    <img src="../images/early/823.jpg" /><br>
+    <img src="../images/early/824.jpg" /><br>
+    <h1>p312</h1>
+    <img src="../images/early/825.jpg" /><br>
+    <h1>p315</h1>
+    <p>给动画加回调函数</p>
+    <img src="../images/early/826.jpg" /><br>
+    <img src="../images/early/827.jpg" /><br>
+    <img src="../images/early/845.jpg" /><br>
+    <h1>p316</h1>
+    <img src="../images/early/828.jpg" /><br>
+    <h1>p318</h1>
+    <p>轮播图</p>
+    <img src="../images/early/829.jpg" /><br>
+    <img src="../images/early/830.jpg" /><br>
+    <img src="../images/early/831.jpg" /><br>
+    <h1>p321</h1>
+    <img src="../images/early/832.jpg" /><br>
+    <img src="../images/early/833.jpg" /><br>
+    <img src="../images/early/834.jpg" /><br>
+    <img src="../images/early/835.jpg" /><br>
+    <img src="../images/early/836.jpg" /><br>
+    <img src="../images/early/837.jpg" /><br>
+    <h1>p325</h1>
+    <p>小bug</p>
+    <img src="../images/early/838.jpg" /><br>
+    <img src="../images/early/839.jpg" /><br>
+    <img src="../images/early/840.jpg" /><br>
+    <img src="../images/early/841.jpg" /><br>
+    <img src="../images/early/842.jpg" /><br>
+    <h1>p328</h1>
+    <p>节流阀 开始声明false 做完声明true</p>
+    <img src="../images/early/843.jpg" /><br>
+    <img src="../images/early/844.jpg" /><br>
+    <img src="../images/early/845.jpg" /><br>
+    <h1>p329</h1>
+    <p>返回顶部</p>
+    <img src="../images/early/846.jpg" /><br>
+    <img src="../images/early/847.jpg" /><br>
+    <h1>p330</h1>
+    <p>筋斗云</p>
+    <img src="../images/early/848.jpg" /><br>
+    <h1>p332</h1>
+    <p id='移动端'>移动端</p>
+    <img src="../images/early/849.jpg" /><br>
+    <img src="../images/early/850.jpg" /><br>
+    <h1>p335</h1>
+    <p>拖动元素</p>
+    <img src="../images/early/851.jpg" /><br>
+    <img src="../images/early/852.jpg" /><br>
+    <p>移动端轮播图</p>
+    <img src="../images/early/853.jpg" /><br>
+    <img src="../images/early/854.jpg" /><br>
+    <img src="../images/early/855.jpg" /><br>
+    <img src="../images/early/856.jpg" /><br>
+    <img src="../images/early/857.jpg" /><br>
+    <img src="../images/early/858.jpg" /><br>
+    <img src="../images/early/859.jpg" /><br>
+    <img src="../images/early/860.jpg" /><br>
+    <img src="../images/early/861.jpg" /><br>
+    <img src="../images/early/862.jpg" /><br>
+    <h1>p345</h1>
+    <p>click 点击问题 插件</p>
+    <img src="../images/early/863.jpg" /><br>
+    <img src="../images/early/864.jpg" /><br>
+    <img src="../images/early/865.jpg" /><br>
+    <h1>p350</h1>
+    <img src="../images/early/866.jpg" /><br>
+    <img src="../images/early/867.jpg" /><br>
+    <img src="../images/early/868.jpg" /><br>
+    <h1>p355</h1>
+    <p>本地存储</p>
+    <img src="../images/early/869.jpg" /><br>
+    <img src="../images/early/870.jpg" /><br>
+    <img src="../images/early/871.jpg" /><br>
+    <img src="../images/early/872.jpg" /><br>
+    <h1>p359</h1>
+    <p id="jQuery">jQuery</p>
+    <img src="../images/early/873.jpg" /><br>
+    <img src="../images/early/874.jpg" /><br>
+    <img src="../images/early/875.jpg" /><br>
+    <h1>p361</h1>
+    <p>入口函数</p>
+    <img src="../images/early/876.jpg" /><br>
+    <img src="../images/early/877.jpg" /><br>
+    <h1>p364</h1>
+    <p>jQuery对象和DOM对象</p>
+    <img src="../images/early/878.jpg" /><br>
+    <img src="../images/early/879.jpg" /><br>
+    <img src="../images/early/880.jpg" /><br>
+    <h1>p366</h1>
+    <p>基础选择器</p>
+    <img src="../images/early/881.jpg" /><br>
+    <img src="../images/early/882.jpg" /><br>
+    <h1>p367</h1>
+    <p>隐式迭代</p>
+    <img src="../images/early/883.jpg" /><br>
+    <img src="../images/early/884.jpg" /><br>
+    <img src="../images/early/885.jpg" /><br>
+    <h1>p368</h1>
+    <p>筛选选择器方法</p>
+    <img src="../images/early/886.jpg" /><br>
+    <img src="../images/early/887.jpg" /><br>
+    <img src="../images/early/888.jpg" /><br>
+    <img src="../images/early/889.jpg" /><br>
+    <h1>p372</h1>
+    <p>排他思想</p>
+    <img src="../images/early/890.jpg" /><br>
+    <p>链式编程</p>
+    <img src="../images/early/js2.jpg" /><br>
+    <img src="../images/early/js3.jpg" /><br>
+    <img src="../images/early/891.jpg" /><br>
+    <h1>p374</h1>
+    <p>修改样式css</p>
+    <img src="../images/early/892.jpg" /><br>
+    <img src="../images/early/893.jpg" /><br>
+    <img src="../images/early/894.jpg" /><br>
+    <img src="../images/early/895.jpg" /><br>
+    <img src="../images/early/896.jpg" /><br>
+    <h1>p378</h1>
+    <p>动画效果</p>
+    <img src="../images/early/897.jpg" /><br>
+    <img src="../images/early/898.jpg" /><br>
+    <img src="../images/early/899.jpg" /><br>
+    <img src="../images/early/900.jpg" /><br>
+    <img src="../images/early/901.jpg" /><br>
+    <img src="../images/early/902.jpg" /><br>
+    <img src="../images/early/903.jpg" /><br>
+    <img src="../images/early/904.jpg" /><br>
+    <img src="../images/early/905.jpg" /><br>
+    <img src="../images/early/906.jpg" /><br>
+    <h1>p385</h1>
+    <p>固有自定义属性值</p>
+    <img src="../images/early/907.jpg" /><br>
+    <img src="../images/early/908.jpg" /><br>
+    <img src="../images/early/909.jpg" /><br>
+    <img src="../images/early/910.jpg" /><br>
+    <p>:checked</p>
+    <img src="../images/early/911.jpg" /><br>
+    <h1>p388</h1>
+    <p>文本内容值</p>
+    <img src="../images/early/912.jpg" /><br>
+    <img src="../images/early/913.jpg" /><br>
+    <img src="../images/early/914.jpg" /><br>
+    <img src="../images/early/915.jpg" /><br>
+    <img src="../images/early/916.jpg" /><br>
+    <img src="../images/early/917.jpg" /><br>
+    <h1>p393</h1>
+    <p>each遍历元素</p>
+    <img src="../images/early/918.jpg" /><br>
+    <img src="../images/early/919.jpg" /><br>
+    <img src="../images/early/920.jpg" /><br>
+    <img src="../images/early/921.jpg" /><br>
+    <img src="../images/early/922.jpg" /><br>
+    <h1>p396</h1>
+    <p>元素操作</p>
+    <img src="../images/early/923.jpg" /><br>
+    <img src="../images/early/924.jpg" /><br>
+    <img src="../images/early/925.jpg" /><br>
+    <img src="../images/early/926.jpg" /><br>
+    <img src="../images/early/927.jpg" /><br>
+    <img src="../images/early/928.jpg" /><br>
+    <img src="../images/early/929.jpg" /><br>
+    <img src="../images/early/930.jpg" /><br>
+    <h1>p400</h1>
+    <p>事件注册 事件绑定</p>
+    <img src="../images/early/931.jpg" /><br>
+    <img src="../images/early/932.jpg" /><br>
+    <img src="../images/early/933.jpg" /><br>
+    <img src="../images/early/934.jpg" /><br>
+    <img src="../images/early/935.jpg" /><br>
+    <h1>p403</h1>
+    <p>事件解绑</p>
+    <img src="../images/early/936.jpg" /><br>
+    <h1>p404</h1>
+    <p>自动触发事件</p>
+    <img src="../images/early/937.jpg" /><br>
+    <img src="../images/early/938.jpg" /><br>
+    <h1>p405</h1>
+    <p>事件对象</p>
+    <img src="../images/early/939.jpg" /><br>
+    <h1>p407</h1>
+    <p>其他方法 对象拷贝 多库共存 jquery插件 懒加载</p>
+    <img src="../images/early/940.jpg" /><br>
+    <img src="../images/early/941.jpg" /><br>
+    <img src="../images/early/942.jpg" /><br>
+    <img src="../images/early/943.jpg" /><br>
+    <h1>p415</h1>
+    <p>todolist例子</p>
+    <img src="../images/early/944.jpg" /><br>
+    <img src="../images/early/945.jpg" /><br>
+    <img src="../images/early/946.jpg" /><br>
+    <img src="../images/early/947.jpg" /><br>
+    <img src="../images/early/948.jpg" /><br>
+    <img src="../images/early/949.jpg" /><br>
+    <img src="../images/early/950.jpg" /><br>
+    <img src="../images/early/951.jpg" /><br>
+    <img src="../images/early/952.jpg" /><br>
+    <img src="../images/early/953.jpg" /><br>
+    <img src="../images/early/954.jpg" /><br>
+    <img src="../images/early/955.jpg" /><br>
+    <img src="../images/early/956.jpg" /><br>
+    <img src="../images/early/957.jpg" /><br>
+    <img src="../images/early/958.jpg" /><br>
+    <h1>p425</h1>
+    <p>jQuery尺寸和位置操作</p>
+    <img src="../images/early/959.jpg" /><br>
+    <img src="../images/early/960.jpg" /><br>
+    <img src="../images/early/961.jpg" /><br>
+    <img src="../images/early/962.jpg" /><br>
+    <img src="../images/early/963.jpg" /><br>
+    <img src="../images/early/964.jpg" /><br>
+    <img src="../images/early/965.jpg" /><br>
+    <h1>p430</h1>
+    <p>品优购电梯导航</p>
+    <img src="../images/early/966.jpg" /><br>
+    <img src="../images/early/967.jpg" /><br>
+    <img src="../images/early/968.jpg" /><br>
+    <img src="../images/early/969.jpg" /><br>
+    <h1>js高级</h1>
+    <h1>p436</h1>
+    <p>面向对象</p>
+    <img src="../images/early/970.jpg" /><br>
+    <img src="../images/early/971.jpg" /><br>
+    <img src="../images/early/972.jpg" /><br>
+    <img src="../images/early/973.jpg" /><br>
+    <img src="../images/early/974.jpg" /><br>
+    <img src="../images/early/975.jpg" /><br>
+    <h1>p436</h1>
+    <p>类</p>
+    <img src="../images/early/976.jpg" /><br>
+    <img src="../images/early/977.jpg" /><br>
+    <img src="../images/early/978.jpg" /><br>
+    <img src="../images/early/979.jpg" /><br>
+    <p>类的继承extends 引用super</p>
+    <img src="../images/early/980.jpg" /><br>
+    <img src="../images/early/981.jpg" /><br>
+    <img src="../images/early/982.jpg" /><br>
+    <p>this加小括号里面直接调用 </p>
+    <img src="../images/early/983.jpg" /><br>
+    <img src="../images/early/984.jpg" /><br>
+    <img src="../images/early/985.jpg" /><br>
+    <h1>p445</h1>
+    <p>tab切换 方法加小括号直接调用</p>
+    <img src="../images/early/986.jpg" /><br>
+    <img src="../images/early/987.jpg" /><br>
+    <img src="../images/early/988.jpg" /><br>
+    <img src="../images/early/989.jpg" /><br>
+    <img src="../images/early/990.jpg" /><br>
+    <img src="../images/early/991.jpg" /><br>
+    <img src="../images/early/992.jpg" /><br>
+    <img src="../images/early/993.jpg" /><br>
+    <img src="../images/early/994.jpg" /><br>
+    <img src="../images/early/995.jpg" /><br>
+    <img src="../images/early/996.jpg" /><br>
+    <h1>p448</h1>
+    <p>构造函数</p>
+    <img src="../images/early/997.jpg" /><br>
+    <img src="../images/early/998.jpg" /><br>
+    <img src="../images/early/999.jpg" /><br>
+    <img src="../images/early/1000.jpg" /><br>
+    <img src="../images/early/js4.jpg" /><br>
+    <img src="../images/early/js5.jpg" /><br>
+    <img src="../images/early/js6.jpg" /><br>
+    <img src="../images/early/js7.jpg" /><br>
+    <img src="../images/early/js8.jpg" /><br>
+    <img src="../images/early/js9.jpg" /><br>
+    <img src="../images/early/js10.jpg" /><br>
+    <img src="../images/early/js11.jpg" /><br>
+    <img src="../images/early/js12.jpg" /><br>
+    <img src="../images/early/js13.jpg" /><br>
+    <img src="../images/early/js14.jpg" /><br>
+    <img src="../images/early/js15.jpg" /><br>
+    <img src="../images/early/js16.jpg" /><br>
+    <img src="../images/early/js17.jpg" /><br>
+    <img src="../images/early/js18.jpg" /><br>
+    <h1>p472</h1>
+    <p>es5中新增的方法</p>
+    <img src="../images/early/js19.jpg" /><br>
+    <p>forEach</p>
+    <img src="../images/early/js20.jpg" /><br>
+    <img src="../images/early/js21.jpg" /><br>
+    <p>filter</p>
+    <img src="../images/early/js22.jpg" /><br>
+    <img src="../images/early/js23.jpg" /><br>
+    <p>some</p>
+    <img src="../images/early/js24.jpg" /><br>
+    <img src="../images/early/js25.jpg" /><br>
+    <p>查询商品案例</p>
+    <img src="../images/early/js26.jpg" /><br>
+    <img src="../images/early/js27.jpg" /><br>
+    <img src="../images/early/js28.jpg" /><br>
+    <img src="../images/early/js29.jpg" /><br>
+    <p>字符串方法trim</p>
+    <img src="../images/early/js30.jpg" /><br>
+    <img src="../images/early/js31.jpg" /><br>
+    <p>对象方法Object.keys</p>
+    <img src="../images/early/js32.jpg" /><br>
+    <p>Object.defineProperty</p>
+    <img src="../images/early/js33.jpg" /><br>
+    <img src="../images/early/js34.jpg" /><br>
+    <img src="../images/early/js35.jpg" /><br>
+    <p>函数进阶</p>
+    <img src="../images/early/js36.jpg" /><br>
+    <img src="../images/early/js37.jpg" /><br>
+    <img src="../images/early/js38.jpg" /><br>
+    <h1>p487</h1>
+    <p>改变函数内部 this指向</p>
+    <img src="../images/early/js39.jpg" /><br>
+    <img src="../images/early/js40.jpg" /><br>
+    <img src="../images/early/js41.jpg" /><br>
+    <img src="../images/early/js42.jpg" /><br>
+    <img src="../images/early/js43.jpg" /><br>
+    <img src="../images/early/js44.jpg" /><br>
+    <img src="../images/early/js45.jpg" /><br>
+    <h1>p493</h1>
+    <p>严格模式</p>
+    <img src="../images/early/js46.jpg" /><br>
+    <img src="../images/early/js47.jpg" /><br>
+    <img src="../images/early/js48.jpg" /><br>
+    <img src="../images/early/js49.jpg" /><br>
+    <img src="../images/early/js50.jpg" /><br>
+    <img src="../images/early/js51.jpg" /><br>
+    <h1>p495</h1>
+    <p>高阶函数</p>
+    <img src="../images/early/js52.jpg" /><br>
+    <h1>p497</h1>
+    <p>闭包</p>
+    <img src="../images/early/js53.jpg" /><br>
+    <img src="../images/early/js54.jpg" /><br>
+    <img src="../images/early/js55.jpg" /><br>
+    <img src="../images/early/js56.jpg" /><br>
+    <img src="../images/early/js57.jpg" /><br>
+    <img src="../images/early/js58.jpg" /><br>
+    <img src="../images/early/js59.jpg" /><br>
+    <h1>p502</h1>
+    <p>递归</p>
+    <img src="../images/early/js60.jpg" /><br>
+    <img src="../images/early/js61.jpg" /><br>
+    <img src="../images/early/js62.jpg" /><br>
+    <img src="../images/early/js63.jpg" /><br>
+    <img src="../images/early/js64.jpg" /><br>
+    <img src="../images/early/js65.jpg" /><br>
+    <img src="../images/early/js66.jpg" /><br>
+    <img src="../images/early/js67.jpg" /><br>
+    <h1>p510</h1>
+    <p>正则表达式</p>
+    <img src="../images/early/js68.jpg" /><br>
+    <img src="../images/early/js69.jpg" /><br>
+    <img src="../images/early/js70.jpg" /><br>
+    <img src="../images/early/js71.jpg" /><br>
+    <img src="../images/early/js72.jpg" /><br>
+    <img src="../images/early/js73.jpg" /><br>
+    <img src="../images/early/js74.jpg" /><br>
+    <img src="../images/early/js75.jpg" /><br>
+    <img src="../images/early/js76.jpg" /><br>
+    <img src="../images/early/js77.jpg" /><br>
+    <img src="../images/early/js78.jpg" /><br>
+    <img src="../images/early/js79.jpg" /><br>
+    <img src="../images/early/js80.jpg" /><br>
+    <img src="../images/early/js81.jpg" /><br>
+    <img src="../images/early/js82.jpg" /><br>
+    <img src="../images/early/js83.jpg" /><br>
+    <img src="../images/early/js84.jpg" /><br>
+    <img src="../images/early/js85.jpg" /><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="dibu"></div>
+</body>
+
+</html>

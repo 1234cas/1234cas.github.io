@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js基础</title>
+</head>
+
+<body>
+    <h1>ECMAscript</h1>
+    <p>HTML推荐用"" JS推荐用''</p>
+    <p>输入框window.prompt 打印输出console.log 输出框alert</p>
+    <p>变量是程序在内存中申请的一块用来存放数据的空间 var a=1,b=2</p>
+    <p>变量命名规范 由字母(a-zA-Z)数字(0-9)下划线(_)美元符号($)组成 区分大小写 不能数字开头 不能是关键字保留字 有意义 驼峰命名法</p>
+    <p>变量一般用名词 函数一般用动词</p>
+    <h3>变量的数据类型usonb Undefined String Symbol Object Null Number Boolean</h3>
+    <p>数字 八进制前面加0 十六进制前面加Ox 数值最大最小Number.MAX_VALUE/MIN_VALUE 无穷大小Infinity/-infinity </p>
+    <p>非数字NaN isNaN()判断是否为数字 返回布尔</p>
+    <p>字符串 引号嵌套外单内双 字符串转义符\ 换行\n 反斜杠\\ 单引号\' 双引号\" tab缩进\t 空格\b</p>
+    <p>str.length +数值相加,字符相接 字符串拼接引引加加 隐式转换用字符串-0 </p>
+    <p>布尔 未定义 空 布尔型的参与数字运算时true值为1 false为0 声明为赋值undefined 加数字返回NaN Null值为0</p>
+    <p>typeof判断数据类型 constructor instanceof判断对象的类型</p>
+    <h3>数据类型转换 使用表单、prompt获取过来的数据默认是字符串类型的</h3>
+    <p>转字符串 num.toString() String(num) 隐式转换加号拼接字符串</p>
+    <p>转数字 parseInt(str) parseFloat(str) Number(str) 隐式转换用算术运算符</p>
+    <p>转布尔 Boolean() 代表空或者否定的值都会被转换为false 如'' 0 NaN null undefined</p>
+    <p>程序语言翻译成机器语言要经过翻译器 翻译器翻译方法有编译和解释 编译就是执行之前就进行编译 解释是边执行边解释</p>
+    <hr>
+
+    <h1>运算符 </h1>
+    <h3>算术运算符</h3>
+    <p>浮点数有精度问题 不要直接判断两个浮点数是否相等 浮点数精度问题可以这么解决var x = 0.1; var y = 0.2; var z = (x * 10 + y * 10) / 10;</p>
+    <p>表达式:是由数字、运算符、变量等以能求得数值的有意义排列方法所得的组合 表达式最终都会有一个结果,返回给我们,我们成为返回值</p>
+    <p>前置++:先自加 后返回值 后置++:先返回值 再自加 +在前面就先加在后面就后加 var e=10; var f=e++ + ++e // 22</p>
+    <h3>比较运算符</h3>
+    <pre>< > >= <= == != === !== =赋值 ==判断值相等 ===判断全等</pre>
+    <h3>逻辑运算符</h3>
+    <p>逻辑与&&(and) 逻辑或||(or) 非、取反!(not) </p>
+    <p>逻辑中断 &&表达式1为假则为假 ||表达式1为真则为真 这俩情况下表达式2不会执行 可能会影响运行结果</p>
+    <h3>运算符优先级</h3>
+    <img src="../../images/early/555.jpg">
+    <hr>
+
+    <h1>条件语句</h1>
+    <p>if语句 if(条件表达式){执行语句}</p>
+    <p>if(){} / if(){} else{} / if(){} else if(){} else{}</p>
+    <p>三元表达式 var result = num>5 ? '是的' ; '不是'</p>
+    <p>switch语句 值匹配case时要全等 必须要有break</p>
+    <p>switch(){case 1:执行语句 break; case 2:执行语句 break; default(相当于else):执行语句}</p>
+    <p>当分支比较少时，if...else语句的执行效率比switch语句高。当分支比较多时，switch语句的执行效率比较高,而且结构更清晰。 因为switch只进行一次判断</p>
+    <p>for循环 for(初始化变量;条件表达式;操作表达式){循环体}</p>
+    <pre>for(let i =0; i < div.length;i++){console.log(i)} </pre>
+    <p>双重for循环 外面循环执行一遍 里面循环执行全部</p>
+    <p>while语句 while(条件表达式){执行语句}</p>
+    <p>条件为true就一直执行 要在执行语句中加入计数器</p>
+    <p>do{执行语句} while(条件表达式) 先执行在判断 do while至少执行一次</p>
+    <p>continue跳出本次循环 if(){ xxx; continue;} 跳出指定循环 break跳出整个循环</p>
+    <hr>
+
+    <h1>引用数据类型</h1>
+    <h3>数组</h3>
+    <p>利用new创建var arr=new Array(); 利用数组字面量var arr =[];</p>
+    <p>数组名[索引] arr[0] 索引从0开始 arr.length</p>
+    <p>可以通过修改length来增加减少数组元素 也可以通过修改数组索引来新增数组元素arr[arr.length]=arr.length</p>
+    <p>空数组的length为0可以当索引号来添加元素 newArr[newArr.length]=arr[i];可以改成newArr.push(arr[i])</p>
+    <p>翻转数组for( <strong>var i=arr.length-1</strong> ;i>=0;i--){newArr[newArr.length]=arr[i];}</p>
+    <h3>函数</h3>
+    <p>声明函数function 函数名(形参){函数体} 调用函数 函数名(实参) 没传实参进来形参默认是undefined</p>
+    <p>return返回值 var result = getResult() return只能返回一个值 要返回多个返回数组 没有写return默认返回undefined</p>
+    <p>return不仅可以退出循环 还能够返回return语句中的值 同时还可以结束当前的函数体内的代码</p>
+    <p>所有函数都内置了一个arguments对象 arguments对象中存储了传递的所有实参 arguments是伪数组</p>
+    <p>函数声明方式 1.命名函数function fn(){} 2.函数表达式(匿名函数) var fn=function(){}</p>
+    <p>在全局作用域下声明的变量叫做全局变量(在函数外部定义的变量):在任何一个地方都可以使用，只有在浏览器关闭时才会被销毁,因此比较占内存</p>
+    <p>在局部作用域下声明的变量叫做局部变量(在函数内部定义的变量):只在函数内部使用，当其所在的代码块被执行时，会被初始化;当代码块运行结束后，就会被销毁,因此更节省内存空间 </p>
+    <p>预解析 变量提升就是把所有的变量声明提升到当前的作用域最前面不提升赋值操作 函数提升就是把所有的函数声明提升到当前作用域的最前面不调用函数 函数提升是把一整个函数提到前面</p>
+    <h3>对象</h3>
+    <p>对象由属性和方法组成 对象就是一组无序的相关属性和方法的集合</p>
+    <p>对象的调用 1.对象.属性名 2.对象['属性名'] 3.对象.方法名() </p>
+    <p>.调用和[]调用的差别 .后面不能是关键字和数字 但是[]可以 []使用更加广泛</p>
+    <p>创建对象可以通过1.var obj = new Object() 2.构造函数function Star(){} </p>
+    <p>构造函数 函数名大写 不需要return 要new一下 属性和方法加this </p>
+    <p>new在执行时做的四件事 1.在内存中创建一个新的空对象 2.让 this指向这个新的对象 3.执行构造函数里面的代码，给这个新对象添加属性和方法 4.返回这个新对象(所以构造函数里面不需要return).</p>
+    <p>遍历对象用for in for(变量 in 对象){} for(var k in obj){console.log(k+obj[k])}</p>
+    <hr>
+
+    <h1>内置对象</h1>
+    <h3>Math</h3>
+    <p>Math数学对象 不是构造函数 不需要new来调用 直接使用他的属性和方法</p>
+    <p>圆周率Math.PI 向下取整Math.floor() 向上取整Math.ceil() 四舍五入Math.round() 绝对值Math.abs() 最大最小值Math.max()/Math.min()</p>
+    <p>这些方法也都会隐式转换 随机数Math.random() 两个数之间的随机整数并且包括这两个数Math.floor(Math.random()*(max-min+1)+min)</p>
+    <h3>Date</h3>
+    <p>var date=new Date()</p>
+    <p>当前年份date.getFullYear() 当前月份date.gerMonth()+1 当前日期date.getDate() 当前星期date.getDay()</p>
+    <pre>时date.getHours() 分date.getMinutes() 秒date.getSeconds h=h < 10 ?'0'+ h : h ; </pre>
+    <p>获取Date总的毫秒数(时间戳 离1970.1.1) 1.date.valueOf()/date.getTime() 2.+new Date() 3.Date.now()</p>
+    <h3>Array</h3>
+    <p>检查是否为数组 1.arr instanceof Array 2.Array.isArray(arr)</p>
+    <p>数组的方法 开头添加一个或者多个push(str) 结尾删除一个或者多个unshift(str) 都返回新的长度 删最后一个pop() 删第一个shift() 都返回删除的值</p>
+    <p>数组排序 颠倒顺序reverse() 排序sort() 都会改变原数组同时返回新数组</p>
+    <p>数组索引 查找元素的第一个索引indexOf() 最后一个索引lastIndexOf() 存在返回索引号 不存在返回-1</p>
+    <p>数组转字符串 toString() join('分隔符')</p>
+    <p>数组拼接截取 连接多个数组concat() 返回新数组 不影响原数组 截取slice(begin.end) splice(begin,num)都返回被删项目的新数组 splice()会影响原数组 </p>
+    <h3>字符串</h3>
+    <p>字符串不可变性 对字符串进行重新赋值时 是改变地址在内存中新开辟了一个内存空间 大量拼接字符串会有效率问题</p>
+    <p>字符串的所有方法都不会改变字符串本身 都会返回一个新字符串</p>
+    <p>根据字符返回位置 indexOf('要找的字符',开始的位置) lastIndexOf() 只找一个找到返回索引没找到返回-1 要查找多个利用循环再将每次查到的索引传入方法 从上一次查到的索引+1接着查</p>
+    <p>根据位置返回字符 charAt(index) charCodeAt H5新增str[index]和charCodeAt()等效</p>
+    <p>字符串截取拼接 拼接多个字符串concat() 截取substr(start,length) slice(start,end)
+        splice()和slice()基本一样但是不接受负值但是如果end比start小ubstring会往前截取 而slice返回空</p>
+    <p>替换字符 replace('被替换的','替换成') replaceAll() 字符串转数组split('分隔符') toUpperCase()转大写 toLowerCase()转小写</p>
+    <p>值类型:简单数据类型/基本数据类型,在存储时变量中存储的是值本身，因此叫做值类型 简单数据类型存放到栈里面 </p>
+    <p>引用类型:复杂数据类型，在存储时变量中存储的仅仅是地址(引用），因此叫做引用数据类型 复杂数据类型存放到堆里面</p>
+    <p>简单数据类型传参 是把变量在栈空间里的值复制了一份给形参 复杂数据类型传参 复制地址 形参和实参保存的是同一个堆地址,所以操作的是同一个对象。</p>
+
+    <script>
+
+    </script>
+
+
+
+    <!-- 
+
+    (element.src.match("bulbon")
+    待看 字符串方法 for in循环对象 类型转换 判断数据类型typeof constructor instanceof判断对象的类型
+    错误
+
+    变量名驼峰 分号结尾
+ -->
+</body>
+
+</html>

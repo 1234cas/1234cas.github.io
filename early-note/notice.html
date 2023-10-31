@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注意事项</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .box {
+            width: 85%;
+            display: flex;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+        }
+
+        .box>section {
+            flex: 1;
+            border: 1px solid black;
+        }
+
+        p {
+            color: black;
+            font-weight: 400;
+            text-indent: 2em;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dinbu"><a href="#dibu">底部</a></div>
+    <div class="dibu"><a href="#dinbu">顶部</a></div>
+    <div class="basic"><a href="基础知识.html">基础知识</a></div>
+    <div class="mobile"><a href="移动端.html">移动端</a></div>
+    <div class="js"><a href="js.html">JavaScript</a></div>
+    <div class="pink">
+        <a href="https://www.bilibili.com/video/BV14J4114768/?spm_id_from=333.788.recommend_more_video.0"
+            target="blank">pink老师的课</a>
+    </div>
+    <div class="notice"><a href="notice.html">注意</a></div>
+    <h1>HTML、CSS</h1>
+    <section class="box">
+        <section class="left">
+            <h3>未掌握</h3>
+            <p>flex布局有时候会捣乱</p>
+            <p>(li>input[type=radio]+label)*4</p>
+            <p>在开发者工具中 引入的css和js文件可以直接修改 但是html无法进行任何修改</p>
+            <p>li{我的天$}*9</p>
+            <p>背景固定background：fixed</p>
+            <p>行高会继承</p>
+            <p>padding值要盒子有宽或者高</p>
+            <p>margin值要盒子有宽</p>
+            <p>margin：auto块级元素盒子水平居中</p>
+            <p>top: 50%;left : 50%;transform: translate( -50%, -50%);</p>
+            <p>left的优先级比right高 两个同时设置会执行left 不受层叠性的影响</p>
+            <p>display设置为none的时候会导致transition失效 因为display:none使元素消失在页面文档流中 transition无法对一个从无到有的元素进行过度显示</p>
+            <p>collection str.match() str.search()
+                数组map some every filter includes</p>
+        </section>
+        <section class="right">
+            <h3>已掌握</h3>
+            <p>水平居中对齐 text-align: center;</p>
+            <p>垂直居中 line-height等于盒子高度</p>
+            <p>list-style:none;</p>
+            <p>:hover ul li</p>
+            <p>浮动和脱标的盒子不会有外边距合并的问题</p>
+            <p>子绝父相</p>
+            <p>浮动不会压住文字，文字会围绕浮动元素，绝对定位会压住文字</p>
+            <P>一个盒子里面两个部分，其中一个是文字就可以给另一个加浮动</P>
+            <p>给表单添加outline:0;或者 outline:none;样式之后，就可以去掉默认的蓝色边框</p>
+            <p>防止拖拽文本域，给textarea添加 resize: none;</p>
+            <p>垂直对齐vertical—align 用于对齐文本和图片，只对行内块或者行内有效</p>
+            <p>margin负值运用 1.让每个盒子margin往左侧移动-1px正好压住相邻盒子边框
+                2.鼠标经过某个盒子的时候，提高当前盒子的层级即呵(如果没有有定位，则加相对定位(保留位置)，如果有定位，则加z-index)
+            </p>
+            <p>::before ::after要设置宽高得加inline-block 加绝对定位和浮动都可以 </p>
+            <p>谁做过度给谁加</p>
+            <p>做移动效果就用translate 类似定位细微差别</p>
+            <p>flex布局子元素float clear vertical-align无效</p>
+            <p>水平垂直居中 justify-content:center align-items:center </p>
+        </section>
+    </section>
+    <hr>
+    <h1>JavaScript</h1>
+    <section class="box">
+        <section class="left">
+            <h3>未掌握</h3>
+            <p>//hash地址不要出现大写</p>
+            <p>修改配置文件 项目要重启</p>
+            <p>debugger手动断点</p>
+            <pre>function hide(e){
+                // e.target 引用着 li元素
+                // 不像 e.currentTarget 引用着其父级的 ul 元素.
+                    e.target.style.visibility = 'hidden';
+                    }
+                    // 添加监听事件到列表，当每个 li 被点击的时候都会触发。
+                        ul.addEventListener('click', hide, false);
+                        https://developer.mozilla.org/zh-CN/docs/Web/API/Event/target
+                    </pre>
+            <p>使用foreach()时发现，不能使用break和continue这两个关键字</p>
+            <p>13:37:56
+                vue核心有两点 一：数据驱动界面
+
+                　 13:38:17
+                二毫无疑问就是组件化
+            </p>
+            <p>在事件监听或者定时器里面直接调用函数不需要加()</p>
+            <p>array.includes判断数据有没有某一数据 返回布尔</p>
+        </section>
+        <section class="right">
+            <h3>已掌握</h3>
+
+        </section>
+    </section>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</body>
+
+</html>

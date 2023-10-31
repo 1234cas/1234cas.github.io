@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  usonb u so nb
+  let从内向外找 从外向内找找不到
+  箭头函数this静态 找他爹
+  rest放形参 ...放实参
+  定时器的this指向window
+  对象[属性]
+  从 ES6 开始，全局变量将逐步与顶层对象的属性脱钩。
+  事实上，只要某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值。
+  对象的解构赋值可以取到继承的属性。
+  建议只要有可能，就不要在模式中放置圆括号。
+  模板编译不懂
+  类的属性定义在类即this上，类的方法定义在类的原型上
+  类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
+  <script>
+    const a = ['1', '12', '22'];
+    a.length = 0;
+    console.log(a);
+    let obj = { first: 'hello', last: 'world' };
+    let { first: f, last: l } = obj;
+    console.log(f); // 'hello'
+
+    let template = `
+<ul>
+  <% for(let i=0; i < data.supplies.length; i++) { %>
+    <li><%= data.supplies[i] %></li>
+  <% } %>
+</ul>
+`;
+    const supplies = ['1', '2'];
+    console.log(template);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>pink</p>
+  <script>
+    class Star {
+      constructor(nname, age) {
+        this.nname = nname;
+        this.age = age;
+      }
+      sing(song) {
+        console.log(this.nname + song + 'ge');
+      }
+
+    }
+
+    let www = new Star('www', '1',);
+    console.log(www.nname);
+    www.sing('today');
+
+    class Son extends Star {
+      constructor(nname, age, money) {
+        //爹在前
+        super(nname, age);
+        this.money = money;
+
+      }
+    }
+    let sonn = new Son('wlw', 2);
+    sonn.sing('1');
+  </script>
+</body>
+
+</html>

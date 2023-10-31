@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOM</title>
+  <style>
+    .btns {
+      position: relative;
+      width: 100%;
+      height: 25px;
+    }
+
+    .ab {
+      position: absolute;
+      top: -100%;
+      left: 0;
+    }
+
+    .small {
+      position: absolute;
+      top: -100%;
+      left: 0;
+    }
+
+    #pic {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .font {
+      position: absolute;
+      right: 0;
+      top: 600px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: brown;
+      /* font: font-style font-weight font-size/line-height font-family; line-height和height相等就可以垂直居中*/
+      font: italic 400 20px/100px YaHei;
+      color: pink;
+      text-align: center;
+      text-decoration: line-through;
+      /* text-indent: 2em; */
+    }
+
+    .background>img {
+      width: 600px;
+      vertical-align: middle;
+
+    }
+
+    .background {
+      width: 600px;
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-left: 10px;
+    }
+
+    .mask {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 217px;
+      height: 217px;
+      background-color: #fede4f;
+      opacity: .5;
+      border: 1px solid #ccc;
+      cursor: move;
+      z-index: 100;
+    }
+
+    .big {
+      display: none;
+      position: absolute;
+      left: 610px;
+      top: 0;
+      width: 700px;
+      height: 700px;
+      background-color: yellowgreen;
+      overflow: hidden;
+    }
+
+    .bigimg {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+
+
+    /* 轮播图样式 */
+    .focus {
+      position: relative;
+      padding-top: 30px;
+      height: 455px;
+      width: 721px;
+      overflow: hidden;
+    }
+
+    .focus img {
+      height: 455px;
+      width: 721px;
+    }
+
+    .focus ul {
+      position: absolute;
+      width: 500%;
+      padding: 0;
+    }
+
+    .focus ul>li {
+      float: left;
+      list-style: none;
+    }
+
+    .arrow_l {
+      position: absolute;
+      top: 0;
+      left: 50px;
+    }
+
+    .arrow_r {
+      position: absolute;
+      top: 0;
+      left: 400px;
+    }
+
+    .focus ol {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+    }
+
+    .focus ol>li {
+      float: left;
+      width: 10px;
+      height: 10px;
+      list-style: none;
+      margin: 0 2px;
+      background-color: brown;
+    }
+
+    .focus .current {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>BOM</h1>
+  <p>窗口加载事件 全加载 window.onload=function(){}/window.addEventListener('load',function(){});</p>
+  <p>BOM加载完就执行 document.addEventListener</p>
+  <p>调整窗口大小 window.onresize=function(){}/window.addEventListener</p>
+  <p>定时器 setTimeout clearTimeout setInterval(fn,2000) clearInterval</p>
+  <p>this指向 全局作用域或者普通函数以及定时器的this指向window 方法调用中谁调用指向谁 构造函数中this指向构造函数的实例</p>
+  <p>location对象的属性 location.href/host/port/pathname/search/hash</p>
+  <p>history对象 back() forward() go(1/-1)</p>
+  <p>offset element.offsetParent/offsetTop(返回元素相对于有定位的爹的上边框距离)/offsetLeft/offsetsetLeft/offsetWidth/offsetHeight 返回值不带单位
+  </p>
+  <p>获得元素大小位置用offset 改变元素值用style</p>
+  <p>client element.clientTop/clientLeft(边框大小)/clientWidth/clientHeight(元素大小 不含边框margin)</p>
+  <p>立即执行函数 function fn(){} fn(); (function(){})();(function(){}())也可以传参 第二个小括号相对于调用函数</p>
+  <p>scroll element.scrollTop/scrollLeft(被卷去的上侧距离)/scrollWidth/scrollHeight（内容自身高度 不含边框）</p>
+  <img src="../../images/early/786.jpg" alt="">
+  <img src="../../images/early/787.jpg" alt="">
+  <hr>
+  <h1>动画和轮播图</h1>
+  <p>封装动画 把var time改成obj.time 给不同的元素不同的定时器</p>
+  <p>缓动动画 核心 (target-now)/10 作为每次的步长</p>
+  <p>轮播图 箭头显示隐藏 动态生成小li且绑定排他和点击切图 左右箭头点击事件 根据num来记录显示图片的序列号并实现无缝切换 <br>封一个circle变化的函数 每次图片变化就调用 保证图片和圈圈对应 最后手动调用定时器</p>
+  <p>触屏事件 touchstart touchmove touchend</p>
+  <p>触屏事件对象 touches targetTouches(记这个) changedTouches</p>
+  <p>获得手指的坐标值 targetTouches[0].pageX/pageY</p>
+  <p>手指移动会触发滚动屏幕的默认事件 e.preventDefault();</p>
+  <p>过度完成事件transitionend</p>
+  <p>classList 添加切换和移除类 element.classList.add/remove/toggle('类名')</p>
+  <p>移动端click延时问题 1.禁止缩放 2.封装touch</p>
+  <p>移动端轮播图 动态生成小li 开定时器 监听过度事件实现无缝播放 监听手指触屏事件 根据移动距离来绝定图片的切换 手指离开再开定时器</p>
+  <hr>
+  <h1>本地存储</h1>
+  <p>存储获得移除数据 sessionStorage sessionStorage.setItem(key,value)/getItem(key)/removeItem(key) 一个页面内 关闭浏览器无了</p>
+  <p>localStorage.setItem(key,value)/getItem(key)/removeItem(key)/删所有clear() 一个浏览器内 永存除非手删</p>
+  <br>
+  <section>
+    <div class="btns">
+      <img src="../../images/好看.png" alt="" class="small" width="40px" height="20px">
+      <button class="btn1">btn1</button>
+      <button class="btn2">btn2</button>
+      <button class="btn3">btn3</button>
+      <button class="btn4">btn4</button>
+      <button class="btn5">btn5</button>
+      <button class="btn6">btn6</button>
+    </div>
+    <img src="../../images/好看.png" alt="" id="pic" width="100px" height="100px">
+    <div class="font">rpec</div>
+    <div class="background">
+      <img src="../../images/好看.png" alt="" class="bgimg">
+      <div class="mask"></div>
+      <div class="big">
+        <img src="../../images/好看.png" alt="" class="bigimg">
+      </div>
+    </div>
+
+    <div class="focus ">
+      <a href="javascript:;" class="arrow_l">
+        &lt;
+      </a>
+      <a href="javascript:;" class="arrow_r">kkk</a>
+      <ul>
+        <li>
+          <a href="javascript:;"><img src="../../images/early/786.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="javascript:;"><img src="../../images/early/787.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="javascript:;"><img src="../../images/early/788.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="javascript:;"><img src="../../images/early/789.jpg" alt=""></a>
+        </li>
+      </ul>
+      <ol class="circle"></ol>
+    </div>
+    <div class="focus1 focus">
+      <ul>
+        <li><img src="../../images/early/178.jpg" alt=""></li>
+        <li><img src="../../images/early/179.jpg" alt=""></li>
+        <li><img src="../../images/early/180.jpg" alt=""></li>
+        <li><img src="../../images/early/182.jpg" alt=""></li>
+      </ul>
+      <!-- 小圆点 -->
+      <ol>
+      </ol>
+    </div>
+  </section>
+  <script>
+    window.addEventListener('load', function () {
+      // 跟随鼠标
+      (function () {
+        var pic = document.querySelector('#pic');
+        document.addEventListener('mousemove', function (e) {
+          var x = e.pageX;
+          var y = e.pageY;
+          // console.log(x, y);
+          pic.style.display = 'block';
+          pic.style.left = x + 10 + 'px';
+          pic.style.top = y + 'px';
+        });
+      })();
+
+
+      // 拖动图片
+      (function () {
+        var font = document.querySelector('.font');
+        font.addEventListener('mousedown', function (e) {
+          //xy是鼠标在盒子中的位置
+          var x = e.pageX - font.offsetLeft;
+          var y = e.pageY - font.offsetTop;
+          document.addEventListener('mousemove', move);
+          function move(e) {
+            //直接把xy带进去发现left=offsetLeft，但是位置不断变化是因为上面的e.page是点击时的数据，而下面的e.page不断变化
+            font.style.left = e.pageX - x + 'px';
+            font.style.top = e.pageY - y + 'px';
+          }
+          document.addEventListener('mouseup', function (e) {
+            document.removeEventListener('mousemove', move);
+          })
+        });
+        //返回顶部
+        // font.addEventListener('click', function () {
+        //   animate(window, 0);
+        // })
+      })();
+
+
+      // 放大镜
+      (function () {
+        var bg = document.querySelector('.background');
+        var bgimg = document.querySelector('.bgimg');
+        var mask = document.querySelector('.mask')
+        var big = document.querySelector('.big')
+        var bigimg = document.querySelector('.bigimg')
+        bg.addEventListener('mouseover', function () {
+          mask.style.display = 'block';
+          big.style.display = 'block';
+
+        })
+        bg.addEventListener('mouseout', function () {
+          mask.style.display = 'none';
+          big.style.display = 'none';
+        })
+        bg.addEventListener('mousemove', function (e) {
+          var x = e.pageX - this.offsetLeft;
+          var y = e.pageY - this.offsetTop;
+          var maskX = x - mask.offsetWidth / 2;
+          var maskY = y - mask.offsetHeight / 2;
+          var maskmaxX = bgimg.offsetWidth - mask.offsetWidth;
+          var maskmaxY = bgimg.offsetHeight - mask.offsetHeight;
+          if (maskX <= 0) {
+            maskX = 0;
+          } else if (maskX >= maskmaxX) {
+            maskX = maskmaxX;
+          }
+          if (maskY <= 0) {
+            maskY = 0;
+          } else if (maskY >= maskmaxY) {
+            maskY = maskmaxY;
+          }
+          mask.style.left = maskX + 'px';
+          mask.style.top = maskY + 'px';
+          // big.style.left = maskX + 'px';
+          // big.style.top = maskY + 'px';
+          var bigmaxX = bigimg.offsetWidth - big.offsetWidth;
+          var bigmaxY = bigimg.offsetHeight - big.offsetHeight;
+          var bigX = maskX * bigmaxX / maskmaxX;
+          var bigY = maskY * bigmaxY / maskmaxY;
+          bigimg.style.left = -bigX + 'px';
+          bigimg.style.top = -bigY + 'px';
+        })
+      })();
+
+
+      // 滚动条事件
+      (function () {
+        var font = document.querySelector('.font');
+        var form = document.querySelector('img');
+        var formTop = form.offsetTop;
+        var fontTop = font.offsetTop - formTop;
+        document.addEventListener('scroll', function () {
+          if (window.pageYOffset >= formTop) {
+            font.style.position = 'fixed';
+            font.style.top = fontTop + 'px';
+          } else {
+            font.style.position = 'absolute';
+            font.style.top = 600 + 'px';
+          }
+        })
+        font.addEventListener('click', function () {
+          window.scroll(0, 0);
+        })
+      })();
+
+
+      //动画
+      (function () {
+        var btn1 = document.querySelector('.btn1');
+        btn1.addEventListener('click', function () {
+          if (this.className.indexOf('ab', 0) === -1) {
+            this.className = this.className + '\n' + 'ab';
+          }
+          animate(this, 300);
+        });
+
+        function animate(obj, target) {
+          clearInterval(obj.timer);
+          obj.timer = setInterval(function () {
+            if (obj.offsetLeft == target) {
+              clearInterval(obj.timer);
+              // if (callback) {
+              //   callback();
+              // }
+              callback && callback();
+            }
+            obj.style.left = obj.offsetLeft + 1 + 'px';
+          }, (10))
+        }
+
+
+        var btn2 = document.querySelector('.btn2');
+        btn2.addEventListener('click', function () {
+          if (this.className.indexOf('ab', 0) === -1) {
+            this.className = this.className + '\n' + 'ab';
+          }
+          animate1(this, 500, function () {
+            //这的btn2能不能想办法改成类似this的
+            btn2.style.backgroundColor = 'pink';
+          });
+        });
+        function animate1(obj, target, callback) {
+          clearInterval(obj.timer);
+          obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.offsetLeft == target) {
+              clearInterval(obj.timer);
+              callback && callback();
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+          }, (15))
+        }
+
+
+        var btn3 = document.querySelector('.btn3');
+        var btn4 = document.querySelector('.btn4');
+        btn3.addEventListener('mouseenter', function () {
+          if (btn4.className.indexOf('ab', 0) === -1) {
+            btn4.className = btn4.className + '\n' + 'ab';
+          }
+          animate(btn4, 0, function () {
+            btn4.style.backgroundColor = 'pink';
+          });
+        });
+        btn3.addEventListener('mouseleave', function () {
+          if (btn4.className.indexOf('ab', 0) === -1) {
+            btn4.className = btn4.className + '\n' + 'ab';
+          }
+          animate(btn4, 500, function () {
+            btn4.style.backgroundColor = 'none';
+          });
+        });
+        function animate(obj, target, callback) {
+          clearInterval(obj.timer);
+          obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            console.log(step);
+            console.log(obj.offsetLeft);
+            if (obj.offsetLeft == target) {
+              clearInterval(obj.timer);
+              callback && callback();
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+          }, (15))
+        }
+      })();
+
+
+      //轮播图
+      (function () {
+        var arrow_l = document.querySelector('.arrow_l');
+        var arrow_r = document.querySelector('.arrow_r');
+        var focus = document.querySelector('.focus');
+        var focusWidth = focus.offsetWidth;
+        var timer = null;
+        focus.addEventListener('mouseenter', function () {
+          arrow_l.style.display = 'block';
+          arrow_r.style.display = 'block';
+          clearInterval(timer);
+          timer = null;
+        })
+        focus.addEventListener('mouseleave', function () {
+          arrow_l.style.display = 'none';
+          arrow_r.style.display = 'none';
+          timer = setInterval(function () {
+            arrow_r.click();
+          }, 3000);
+        })
+        var ul = focus.querySelector('ul');
+        var ol = focus.querySelector('.circle');
+
+        for (var i = 0; i < ul.children.length; i++) {
+          var li = document.createElement('li');
+          li.setAttribute('index', i);
+          ol.appendChild(li);
+          li.addEventListener('click', function () {
+            for (var i = 0; i < ol.length; i++) {
+              ol.children[i].className = '';
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index');
+            circle = num = index;
+            animate(ul, -index * focusWidth);
+            circleChange();
+          })
+        }
+        ol.children[0].className = 'current';
+        var num = 0;
+        var circle = 0;
+        var flag = true;
+
+        arrow_r.addEventListener('click', function () {
+          if (flag) {
+            flag = false;
+            if (num == ul.children.length - 1) {
+              ul.style.left = 0;
+              num = 0;
+            }
+            num++;
+            animate(ul, -num * focusWidth, function () {
+              flag = true;
+            });
+            circle++;
+            if (circle == ol.children.length) {
+              circle = 0;
+            }
+            circleChange();
+          }
+        })
+
+        arrow_l.addEventListener('click', function () {
+          if (flag) {
+            flag = false;
+            if (num == 0) {
+              num = ul.children.length - 1;
+              ul.style.left = -num * focusWidth + 'px';
+            }
+            num--;
+            animate(ul, -num * focusWidth, function () {
+              flag = true;
+            });
+            circle--;
+            // if (circle < 0) {
+            //   circle = o.children.length - 1;
+            // }
+            circle = circle < 0 ? ol.children.length - 1 : circle;
+            circleChange();
+          }
+        })
+
+        var first = ul.children[0].cloneNode(true);
+        ul.appendChild(first);
+        function circleChange() {
+          for (var i = 0; i < ol.children.length; i++) {
+            ol.children[i].className = '';
+          }
+          ol.children[circle].className = 'current';
+        }
+        //这个有bug 会多开一个定时器 所以要用用下面的
+        ul.addEventListener('click', function () {
+          timer = setInterval(function () {
+            arrow_r.click();
+          }, 3000);
+        })
+        // timer = setInterval(function () {
+        //   arrow_r.click();
+        // }, 3000);
+      })();
+
+
+      //筋斗云
+      (function () {
+        var current = 0;
+        btns = document.querySelectorAll('button');
+        var small = document.querySelector('.small');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('mouseenter', function () {
+            animate(small, this.offsetLeft)
+          })
+          btns[i].addEventListener('mouseleave', function () {
+            animate(small, current)
+          })
+          btns[i].addEventListener('click', function () {
+            current = this.offsetLeft;
+          })
+        }
+      })();
+
+
+      //移动端轮播图
+      (function () {
+        var focus = document.querySelector('.focus1');
+        var ul = focus.children[0];
+        var w = focus.offsetWidth;
+        var ol = focus.children[1]
+        var index = 0;
+
+        //动态生产小li
+        for (var i = 0; i < ul.children.length; i++) {
+          var li = document.createElement('li');
+          li.setAttribute('index', i);
+          ol.appendChild(li);
+          ol.children[0].classList.add('current');
+        }
+
+        //开定时器
+        focus.addEventListener('click', function () {
+          var timer = setInterval(function () {
+            index++;
+            openTranslate();
+          }, 2000);
+
+          //监听过度结束事件，实现无缝播放
+          ul.addEventListener('transitionend', function () {
+            if (index >= ul.children.length) {
+              index = 0;
+              closeTranslate();
+            } else if (index < 0) {
+              index = ul.children.length - 1;
+              closeTranslate();
+            }
+            ol.querySelector('.current').classList.remove('current');
+            ol.children[index].classList.add('current');
+          });
+
+          var startX = 0;
+          var moveX = 0;
+          var flag = false;
+          //手指触摸事件
+          ul.addEventListener('touchstart', function (e) {
+            startX = e.targetTouches[0].pageX;
+            clearInterval(timer);
+          });
+          ul.addEventListener('touchmove', function (e) {
+            moveX = e.targetTouches[0].pageX - startX;
+            closeTranslate();
+            var translatex = -index * w + moveX;
+            flag = true;
+            e.preventDefault();
+          })
+
+          ul.addEventListener('touchend', function (e) {
+            if (flag) {
+              if (Math.abs(moveX) > 50) {
+                if (moveX > 0) {
+                  index--;
+                } else if (moveX < 0) {
+                  index++;
+                }
+                openTranslate();
+              }
+              else {
+                openTranslate();
+              }
+            }
+            clearInterval(timer);
+            timer = setInterval(function () {
+              index++;
+              openTranslate();
+            }, 2000)
+
+          })
+        })
+
+        function openTranslate() {
+          var translatex = -index * w;
+          ul.style.transition = 'all .3s';
+          ul.style.transform = 'translateX(' + translatex + 'px)';
+        }
+        function closeTranslate() {
+          var translatex = -index * w;
+          ul.style.transition = 'none';
+          ul.style.transform = 'translateX(' + translatex + 'px)';
+        }
+
+      })();
+
+
+      //封装tap，解决click 300ms延时
+      function tap(obj, callback) {
+        var isMove = false;
+        var startTime = 0; // 记录触摸时候的时间变量
+        obj.addEventListener('touchstart', function (e) {
+          startTime = Date.now() // 记录触摸时间
+        });
+        obj.addEventListener('touchmove', function (e) {
+          isMove = true; //看看是否有滑动, 有滑动算拖拽，不算点击
+        });
+        obj.addEventListener('touchend', function (e) {
+          if (!isMove && (Date.now() - startTime) < 150) {//如果手指触摸和离开时间小于150ms 算点击
+            ca1lback && cal1back();//执行回调函数
+          }
+          isMove = false;  // 取反重置
+          startTime = 0;
+        });
+      }
+      //调用
+      // tap(div, function () {
+      //   //执行代码
+      // });
+
+
+      //封装动画
+      function animate(obj, target, callback) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+          var step = (target - obj.offsetLeft) / 10;
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          if (obj.offsetLeft == target) {
+            clearInterval(obj.timer);
+            callback && callback();
+          }
+          obj.style.left = obj.offsetLeft + step + 'px';
+        }, (15))
+      }
+    })
+  </script>
+</body>
+
+</html>

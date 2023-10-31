@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <h1>DOM</h1>
+    <p>获取元素queryselect getByClassName</p>
+    <p>获取body元素document.body 获取html元素document.documentElement</p>
+    <p>事件三部分 事件源(btn) 事件类型(click 可不写就默认触发) 事件处理程序(function) </p>
+    <p>btn.onclick=function(){}</p>
+    <p>改变元素内容 element.innerText纯文本 element.innerHTML包含空格换行和HTML标签</p>
+    <p>表单里面的值 文字内容是根据value来修改的</p>
+    <p>修改元素属性 行内样式操作 element.style 类名样式操作 element.className(会覆盖类名)</p>
+    <p><strong>行内样式可以直接设置e.value 如果是style的就要中间加个style e.style.color</strong></p>
+    <p>获取属性 自带属性 element.属性 自定义属性 element.getAttribute('属性')</p>
+    <p>设置属性 element.属性='值' element.setAttribute('属性','值')</p>
+    <p>移除属性 element.removerAttribute</p>
+    <p>获取H5自定义属性 H5新增 element.dataset.index或者element.dataset['index']</p>
+    <hr>
+    <h1>节点</h1>
+    <p>父节点 node.parentNode 最近的父节点</p>
+    <p>子节点 node.childNodes 所有子节点</p>
+    <p>元素子节点 node.children</p>
+    <p>node.firstChild/lastChild/firstElementChild/lastElementChild</p>
+    <p>实际写法console.log(ol.Children[0]) console.log(ol.Children[ol.children.length-1])</p>
+    <p>兄弟节点 node.nextSibling node.previousSibling/node.nextElementSibling node.previousElementSibling</p>
+    <p>创建元素节点 document.creatElement</p>
+    <p>添加节点 appendChild insertBefore</p>
+    <p>复制节点 node.cloneNode(true/false)</p>
+    <p>动态创建元素 document.write()页面重绘 document.creatElement() 用for循环</p>
+    <p>element.innerHTML(直接写html) 用数组push 然后join转成字符串</p>
+    <!-- <script>
+        for (var i = 0; i <= 100; i++) {
+            arr.push('<a href="#"></a>')
+            inner.innerHTML = arr.join('');
+        }
+    </script> -->
+    <hr>
+    <h1>监听器及事件对象</h1>
+    <p>监听器匿名函数解绑不了</p>
+    <p>onblur onfoucus onmouseenter onmouseleave没有冒泡</p>
+    <p>事件对象常见属性e.target e.srcElement e.type e.cancelBubble e.returnValue e.preventDefault e.stopPropagation</p>
+    <p>e.target点击了哪个元素，就返回那个元素 this哪个元素绑定了这个点击事件，那么就返回谁</p>
+    <p>document.addEventListener('contextmenu/selectstart', function(e){e. preventDefault();})</p>
+    <p>鼠标事件对象e.clientX e.clientY e.pageX e.pageY e.screenX e.screenY</p>
+    <p>键盘对象onkeydown onkeypress(不识别功能键但是区别大小写 大小写可以根据ASCII) onkeyup</p>
+    <hr>
+
+    <section>
+        <button class="btn1">btn1</button>
+        <button class="btn2">btn2</button>
+        <button class="btn3">btn3</button>
+        <button class="btn4">btn4</button>
+        <button class="btn5">btn5</button>
+        <button class="btn6">btn6</button>
+        <!-- 全选按钮 -->
+        <table>
+            <tbody>
+                <tr>
+                    <th>全选<input type="checkbox"></th>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 导航栏显示切换 -->
+        <nav>
+            <ul>
+                <li index="0" class="">index</li>
+                <li index="1" class="">game</li>
+                <li index="2" class="">video</li>
+                <li index="3" class="current">study</li>
+                <li index="4" class="">life</li>
+            </ul><br>
+            <div style="display: none;">首页</div>
+            <div style="display: none;">游戏</div>
+            <div style="display: none;">影视</div>
+            <div style="display: block;">学习</div>
+            <div style="display: none;">生活</div>
+        </nav>
+        <button class="btn7">btn7</button>
+        <button class="btn8">btn8</button>
+        <button class="btn9">btn9</button>
+        <!-- 自动生成表格内容 -->
+        <table>
+            <tbody class="tbody"></tbody>
+        </table>
+    </section>
+    <script>
+        //  btn一个一个打太麻烦 能不能写个循环注册btn
+        var btns = document.querySelectorAll('button');
+        var sec = document.querySelector('section');
+        var btn1 = document.querySelector('.btn1');
+        function getDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var arr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var day = arr[date.getDay()];
+            return '今天是：' + year + '年' + month + '月' + day + '日';
+        }
+        btn1.onclick = function () {
+            alert(getDate());
+        };
+
+
+        var btn2 = document.querySelector('.btn2');
+        btn2.addEventListener('click', function () {
+            btn1.innerHTML = getDate();
+        })
+
+
+        var btn3 = document.querySelector('.btn3');
+        var flag = 0;
+        btn3.addEventListener('click', function () {
+            if (flag == 0) {
+                btn2.innerHTML = 'bnedang';
+                flag = 1;
+            }
+            else {
+                btn2.innerHTML = 'shagua';
+                flag = 0;
+            }
+            btn3.removeEventListener('click', fn)
+
+        })
+
+        var btn4 = document.querySelector('.btn4');
+        // 精灵图
+        // var lis = document.querySelectorAll('li');
+        // for (var i = 0; i < lis.length; i++) {
+        //     var index = i * 44;
+        //     lis[i].style.backgroundPosition = '0-' + index + 'px';
+        // }
+        btn4.addEventListener('click', function () {
+            this.className = 'btn3';
+        })
+
+
+        var btn5 = document.querySelector('.btn5');
+        //点两下才触发是因为第一下触发btn5 第二项才触发排他
+        btn5.addEventListener('click', function () {
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('click', function () {
+                    for (var i = 0; i < btns.length; i++) {
+                        btns[i].style.backgroundColor = '';
+                    }
+                    this.style.backgroundColor = 'pink';
+                })
+            }
+        })
+
+
+        var btn6 = document.querySelector('.btn6');
+        // for (var i = 0; i < imgs.length; i++) {
+        //     imgs[i].addEventListener('click', function () {
+        //         document.body.style.backgroundImage = 'url(' + this + ')'; 
+        //     })
+        // }
+        btn6.addEventListener('mouseover', function () {
+            this.className = 'btn5';
+        })
+        btn6.addEventListener('mouseout', function () {
+            this.className = 'btn6';
+        })
+
+
+        var th = document.querySelector('th>input');
+        var inputs = document.querySelectorAll('td>input');
+        th.addEventListener('click', function () {
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = this.checked;
+            }
+        })
+        //给多个元素加相同的事件就使用for循环注册
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = function () {
+                var flag = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (!inputs[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                th.checked = flag;
+            }
+        }
+
+
+        var lis = document.querySelectorAll('nav>ul>li');
+        var divs = document.querySelectorAll('nav>div');
+        for (var i = 0; i < lis.length; i++) {
+            //通过循环设置自定义属性值
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function () {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'current';
+                //通过获得对应索引号来操控对应元素
+                var index = this.getAttribute('index');
+                for (var i = 0; i < divs.length; i++) {
+                    divs[i].style.display = 'none';
+                }
+                divs[index].style.display = 'block';
+            }
+        }
+
+
+        var btn7 = document.querySelector('.btn7');
+        btn7.addEventListener('click', function () {
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('mouseout', function () {
+                    this.style.display = 'block';
+                })
+                btns[i].addEventListener('mouseover', function () {
+                    this.style.display = 'none';
+                })
+            }
+        })
+
+
+        var btn8 = document.querySelector('.btn8');
+        btn8.addEventListener('click', function () {
+            var btn8$ = document.createElement('button');
+            btn8$.innerHTML = 'btn8$';
+            btn8.appendChild(btn8$);
+            btn8$.addEventListener('click', function (e) {
+                btn8.removeChild(btn8$);
+                e.stopPropagation();
+            })
+        })
+
+
+        var btn9 = document.querySelector('.btn9');
+        btn9.addEventListener('click', function () {
+            sec.addEventListener('click', function (e) {
+                e.target.style.backgroundColor = 'pink';
+            })
+        })
+
+
+        var datas = [{
+            name: 'lin',
+            sex: 'boy',
+            like: 'compile'
+        }, {
+            name: 'huang',
+            sex: 'girl',
+            like: 'unknown'
+        }, {
+            name: 'cheng',
+            sex: 'boy',
+            like: 'mo'
+        }, {
+            name: 'yan',
+            sex: 'boy',
+            like: 'game'
+        }];
+        var tbody = document.querySelector('.tbody');
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            if (i == 0) {
+                for (var k in datas[i]) {
+                    var td = document.createElement('td');
+                    td.innerHTML = k;
+                    tr.appendChild(td);
+                }
+            }
+            else {
+                for (var k in datas[i]) {
+                    var td = document.createElement('td');
+                    td.innerHTML = datas[i][k];
+                    tr.appendChild(td);
+                }
+            }
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascrpt:;">删除</a>'
+            tr.appendChild(td);
+        }
+
+
+    </script>
+</body>
+
+</html>

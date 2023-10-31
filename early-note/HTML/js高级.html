@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta type="viewport" content="width=device-width, initial-scale=1.0">
+    <titledata.some(function(value){ })>js高级</titledata.some>
+        <style>
+            ul li {
+                list-style: none;
+            }
+
+            .main {
+                width: 960px;
+                height: 500px;
+                border-radius: 10px;
+                margin: 50px auto;
+            }
+
+            .main h4 {
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+            }
+
+            .tabsbox {
+                width: 900px;
+                margin: 0 auto;
+                height: 400px;
+                border: 1px solid lightsalmon;
+                position: relative;
+            }
+
+            nav ul {
+                overflow: hidden;
+            }
+
+            nav ul li {
+                float: left;
+                width: 100px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                border-right: 1px solid #ccc;
+                position: relative;
+            }
+
+            nav ul li.liactive {
+                border-bottom: 2px solid red;
+                z-index: 9;
+            }
+
+            #tab input {
+                width: 80%;
+                height: 60%;
+            }
+
+            nav ul li span:last-child {
+                position: absolute;
+                user-select: none;
+                font-size: 12px;
+                top: -18px;
+                right: 0;
+                display: inline-block;
+                height: 20px;
+            }
+
+            .tabadd {
+                position: absolute;
+                /* width: 100px; */
+                top: 0;
+                right: 0;
+            }
+
+            .tabadd span {
+                display: block;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                border: 1px solid #ccc;
+                float: right;
+                margin: 10px;
+                user-select: none;
+            }
+
+            .tabscon {
+                width: 100%;
+                height: 300px;
+                position: absolute;
+                padding: 30px;
+                top: 50px;
+                left: 0px;
+                box-sizing: border-box;
+                border-top: 1px solid #ccc;
+            }
+
+            .tabscon section,
+            .tabscon section.conactive {
+                display: none;
+                width: 100%;
+                height: 100%;
+            }
+
+            .tabscon section.conactive {
+                display: block;
+            }
+        </style>
+</head>
+
+<body>
+    <h1>面向对象</h1>
+    <p>面向对象是以对象功能来划分问题，而不是步骤</p>
+    <p>把大象装进冰箱 1.大象对象:进去 2.冰箱对象:打开 关闭 3.使用大象和冰箱的功能</p>
+    <p>面向过程的方法就像蛋炒饭 而面向对象就像盖浇饭</p>
+    <p>面向对象的特征feature :封装性 继承性 多态性</p>
+    <p>面向对象的思维特点:1.抽取对象共有的属性和方法封装成一个类 2.对类进行实例化 获取类的对象</p>
+    <p>对象由属性和方法constitute 属性：事物的特征 方法：事物的行为</p>
+    <p>创建类 class name{} let xx=new name(); 类必须使用new实例化对象</p>
+    <p>类里面有个constructor函数 可以接收传递过来的参数，并返回实例对象</p>
+    <p>类里面所有的函数不需要写function 多个函数方法之间不需要加逗号</p>
+    <p>类的继承extends class Son extends Father{}</p>
+    <p>super关键字 用于访问和调用父级的函数</p>
+    <p>子类在构造函数中使用super 必须放到this的前面(必须先调用父类的构造方法 再使用子类的构造方法)</p>
+    <p>在ES6中类没有变量提升 所以必须先定义类 才能实例化对象</p>
+    <p>类里面的共有属性和方法一定要加this constructor里面的this指向实例对象 方法里面的this指向这个方法的调用者</p>
+    <hr>
+    <h1>构造函数和原型链</h1>
+    <p>function Star{} let lzt = new Star();</p>
+    <p>把属性写在构造函数里面 把方法写在原型对象prototype里面（因为构造函数存在浪费内存的问题）</p>
+    <p>实例对象有个对象原型__proto__的属性，指向prototype原型对象</p>
+    <p>对象原型__proto__和原型对象prototype都有constructor属性，指回构造函数</p>
+    <p>如果我们给原型对象赋值的是一个对象，就要手动调用constructor指回原来的构造函数</p>
+    <p>Star.prototype={constructor:Star,sing:function(){console.log(123);}} </p>
+    <p>可以通过原型对象来对内置对象进行扩展自定义的方法，只能采用.的形式不能采用对象的形式</p>
+    <p>es5通过构造函数加原型对象来实现继承，称为组合继承</p>
+    <p>继承属性 function Son (uname,age){Father.call(this,uname,age);}</p>
+    <p>继承方法 通过父实例对象将两者联系起来 Son.prototype=new Father(); Son.prototype.constructor=Son;</p>
+    <hr>
+    <h1>es5新增方法</h1>
+    <p>forEach array.forEach(function(currentValue,index,arr){})</p>
+    <p>filter array.filter(function(currentValue,index,arr){}) 返回一个新数组</p>
+    <p>some array.some(function(currentValue,index,arr){}) 返回一个布尔值 找到第一个就终止循环</p>
+    <p>trim() str.trim() 去除一个字符串两端的空白字符 返回一个新字符串</p>
+    <p>Object.keys()obj 返回一个由属性名组成的数组</p>
+    <p>Object.defineProperty(obj,prop,descriptor) 三个属性都是必须的</p>
+    <p>Object.defineProperty()的第三个属性descriptor:以对象形式{}书写</p>
+    <p>value:设置属性值 writable:值是否可以重写 enumerable:属性是否可以被枚举 configurable:属性是否可以被删除或者再被修改特性</p>
+    <p>Object.defineProperty(obj,'number',{value:1000;})</p>
+    <hr>
+    <h1>函数进阶</h1>
+    <p>函数定义的方法 function关键字 匿名函数 new Function()</p>
+    <p>函数的形式 普通函数 对象的方法 构造函数 绑定事件函数 定时器函数 立即执行函数</p>
+    <p>this指向 window 方法所属的对象 实例对象 绑定事件对象 window window</p>
+    <p>改变this指向 call()经常做继承 apply()经常和数组有关 bind()不调用函数但还是想改变this指向</p>
+    <p>严格模式 'use strict' 变量不能没声明就赋值 不能删除已经声明的变量</p>
+    <p>全局作用域下的函数和立即执行函数this指向undefined </p>
+    <p>构造函数不加new直接调用会报错 函数不能有重名的参数</p>
+    <p>高阶函数就是把函数作为参数或者把函数作为返回值</p>
+    <p>闭包就是能够读取其他函数内部变量的函数 延长变量的作用范围</p>
+    <p>一般是通过return函数 再let f1=f(); f1();来实现的 f1()中的this指向全局</p>
+    <p>闭包会使函数中的变量都被保存在内存之中 内存消耗很大 不能滥用闭包</p>
+    <p>递归 函数在内部调用自己 和循环类似 必须加退出条件return 否则会栈溢出</p>
+    <p>浅拷贝 只拷贝一层 更深层次对象级别的只拷贝引用 Object.assign(target,...sources)</p>
+    <p>深拷贝 每一级别的数据都会拷贝</p>
+    <hr>
+    <h1>正则表达式</h1>
+    <p>作用 匹配 替换 提取</p>
+    <p>let rg = new RegExp(//) let rg =//; //里面不用加引号 rg.test(str);</p>
+    <p>边界符^以谁开头 $以谁结尾 /abc/ 有abc的都可以 /^abc/以abc开头 /^abc$/精确匹配</p>
+    <p>范围符[-] /[abc]/ 有任意一个就可以 /[a-z]/ 26个字母都可以</p>
+    <p>字符组合 /^[a-zA-Z]$/a到zA到Z都可以 ^如果在[]里面表q取反 /[^0-9]/</p>
+    <p>量词符 写在想要限制的字符后面 * >=0 + >=1 ? 1||0 /a*/ /a+/ /a?/ {3}三次 {3,}大于三次 {3,6}三到六次 /a{3}/ {}里面不能有空格</p>
+    <p>小括号表示优先级 /(abc){3}/ 如果没有加小括号 {3}只把前面一个字符重复3次</p>
+    <p>\d==[0-9] \D==[^0-9] \w==[A-Za-z0-9_] \W==[^A-Za-z0-9_] \s==[\t\r\n\v\f]匹配空格 \S取反 |表或者</p>
+    <p>replace str.replace(regexp/str,str); 返回新字符串 str.replace(/黄|裸/,'*')</p>
+    <p>/表达式/[switch] g全局匹配 i忽略大小写 gi前两个加起来</p>
+
+
+
+    <section class="main">
+        <h4>
+            Js 面向对象 动态添加标签页
+        </h4>
+        <div class="tabsbox" id="tab">
+            <!-- tab 标签 -->
+            <nav class="firstnav">
+                <ul>
+                    <li class=""><span>测试1</span><span class="iconfont icon-guanbi"></span></li>
+                    <li class="liactive"><span>测试2</span><span class="iconfont icon-guanbi"></span></li>
+                    <li class=""><span>测试3</span><span class="iconfont icon-guanbi"></span></li>
+                </ul>
+                <div class="tabadd">
+                    <span>+</span>
+                </div>
+            </nav>
+
+            <!-- tab 内容 -->
+            <div class="tabscon">
+                <section class="">测试1</section>
+                <section class="conactive">测试2</section>
+                <section class="">测试3</section>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <input type="text" class="start">~
+        <input type="text" class="end">
+        <button class="btn1">搜索</button>
+        <input type="text" class="search">
+        <button class="btn2">查询</button>
+        <table>
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <script>
+        'use strict';
+        (function () {
+            //创建一个类 并实例化和调用方法
+            let that;
+            class Star {
+                constructor(uname, age) {
+                    // that = this;
+                    this.uname = uname;
+                    this.age = age;
+
+                    //this.sing() this加小括号直接调用
+                    this.h1 = document.querySelector('h1');
+                    this.h1.onclick = this.sing;
+                }
+                //类里面所有的函数不需要写function 
+                //多个函数方法之间不需要加逗号
+                sing(song) {
+                    // 点一下h1就会输出
+                    console.log(this.uname + song);
+                    //谁调用方法就指向谁 指向h1
+                    console.log(this);
+                    //指向对象 这的that储存的是constructor里面的this
+                    console.log(that.uname);
+                }
+                dance() {
+                    that = this;
+                    // console.log(this);
+                }
+            }
+            let lzt = new Star('lingoutai', 18);
+            console.log(lzt);
+            lzt.dance();
+
+            //extends 和 super
+            //super必须放在this的前面
+            class Father {
+                constructor(surname) {
+                    this.surname = surname;
+                }
+                song() {
+                    console.log(123);
+                }
+            }
+            class Son extends Father {
+                constructor(surname, firstname) {
+                    super(surname);
+                    this.firstname = firstname;
+                }
+            }
+            let s = new Son();
+            s.song();
+            console.log(this);
+        })();
+
+        (function () {
+            let that;
+            class Tab {
+                constructor(id) {
+                    that = this;
+                    this.main = document.querySelector(id);
+                    this.add = this.main.querySelector('.tabadd');
+                    this.ul = this.main.querySelector('.firstnav ul:first-child');
+                    this.fsection = this.main.querySelector('.tabscon');
+                    this.init();
+                }
+                init() {
+                    this.updateNode();
+                    this.add.onclick = this.addTab;
+                    for (let i = 0; i < this.lis.length; i++) {
+                        this.lis[i].index = i;
+                        this.lis[i].onclick = this.toggleTab;
+                        this.remove[i].onclick = this.removeTab;
+                        this.spans[i].ondblclick = this.editTab;
+                        this.sections[i].ondblclick = this.editTab;
+                    }
+                }
+                updateNode() {
+                    this.lis = this.main.querySelectorAll('li');
+                    this.sections = this.main.querySelectorAll('section');
+                    this.remove = this.main.querySelectorAll('.icon-guanbi');
+                    this.spans = this.main.querySelectorAll('.firstnav li span:first-child');
+                }
+                toggleTab() {
+                    that.clearClass();
+                    this.className = 'liactive';
+                    that.sections[this.index].className = 'conactive';
+                }
+                clearClass() {
+                    for (let i = 0; i < this.lis.length; i++) {
+                        this.lis[i].className = '';
+                        this.sections[i].className = '';
+                    }
+                }
+                addTab() {
+                    that.clearClass();
+                    let random = Math.random();
+                    let li = '<li class="liactive">1<span class="iconfont icon-guanbi"></span></li>'
+                    let section = '<section class="conactive">测试' + random + '</section>';
+                    that.ul.insertAdjacentHTML('beforeend', li);
+                    that.fsection.insertAdjacentHTML('beforeend', section);
+                    that.init();
+                }
+                removeTab(e) {
+                    e.stopPropagation();
+                    let index = this.parentNode.index;
+                    that.lis[index].remove();
+                    that.sections[index].remove();
+                    that.init();
+                    if (document.querySelector('.liactive')) return;
+                    index--;
+                    that.lis[index] && that.lis[index].click();
+                }
+                editTab() {
+                    let str = this.innerHTML;
+                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    this.innerHTML = '<input type="text"/>';
+                    let input = this.children[0];
+                    input.value = str;
+                    input.select();
+                    input.onblur = function () {
+                        this.parentNode.innerHTML = this.value;
+                    }
+                    input.onkeyup = function (e) {
+                        if (e.keyCode === 13) {
+                            this.blur();
+                        }
+                    }
+                }
+            }
+            new Tab('#tab');
+        })();
+
+        (function () {
+            const data = [{
+                id: 1,
+                pname: '小',
+                price: 3
+            }, {
+                id: 2,
+                pname: '小十',
+                price: 39
+            }, {
+                id: 3,
+                pname: '小木',
+                price: 399
+            }, {
+                id: 4,
+                pname: '小米',
+                price: 3999
+            }];
+
+            let tbody = document.querySelector('tbody');
+            let input1 = document.querySelector('.start');
+            let input2 = document.querySelector('.end');
+            let input3 = document.querySelector('.search');
+            let btn1 = document.querySelector('.btn1');
+            let btn2 = document.querySelector('.btn2');
+            function fn(data) {
+                //先清空再渲染
+                tbody.innerHTML = '';
+                data.forEach(function (value) {
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>'
+                    tbody.appendChild(tr);
+                });
+            };
+            fn(data);
+            btn1.addEventListener('click', function () {
+                const newData = data.filter(function (value) {
+                    return value.price >= input1.value && value.price <= input2.value;
+                });
+                fn(newData);
+            });
+            btn2.addEventListener('click', function () {
+                const arr = [];
+                let flag = data.some(function (value) {
+                    if (value.pname === input3.value) {
+                        arr.push(value);
+                        return true;
+                    }
+                })
+                fn(arr);
+            })
+
+            function f1() {
+                let num = 1;
+                return function f2() {
+                    console.log(num);
+                    console.log(this);
+                }
+            }
+            let num = 100;
+            let f3 = f1();
+            f3();
+        })();
+
+        (function () {
+            let regexp = new RegExp(/123/);
+            let regexp1 = /123/;
+            console.log(regexp1);
+            console.log(regexp1.test('123'));
+            let rg = /a{3, 12}/;
+            console.log(rg.test('aaaaa'));
+
+        })();
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

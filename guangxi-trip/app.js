@@ -116,5 +116,47 @@ document.querySelector('.close-dialog').addEventListener('click',()=>document.ge
 document.getElementById('nav-dialog').addEventListener('click',e=>{if(e.target.id==='nav-dialog'){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
 document.getElementById('fit-map').addEventListener('click',()=>{if(map)renderMap();else toast('地图尚未加载。行程导航仍可使用。');});
 document.getElementById('locate').addEventListener('click',()=>{if(!map){toast('地图尚未加载。');return;}if(!navigator.geolocation){toast('当前浏览器不支持定位，请使用导航入口。');return;}navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];if(userMarker)userMarker.setLatLng(ll);else userMarker=L.circleMarker(ll,{radius:8,color:'#fff',weight:3,fillColor:'#1686f0',fillOpacity:1}).addTo(map);map.setView(ll,15);toast('已定位当前位置。');},()=>toast('未能获取位置，请允许浏览器定位，或直接使用导航入口。'),{enableHighAccuracy:true,timeout:12000});});
-if(typeof L!=='undefined'){map=L.map('map',{zoomControl:false,attributionControl:true}).setView([24.8,109.4],7);L.control.zoom({position:'bottomright'}).addTo(map);let errors=0,loaded=false;L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>'}).on('tileload',()=>{loaded=true;}).on('tileerror',()=>{if(++errors===3&&!loaded)toast('底图暂时未能加载，地点标记和导航仍可使用。');}).addTo(map);layer=L.layerGroup().addTo(map);}else{document.querySelector('.map-fallback p').textContent='地图加载失败。请使用行程卡片中的导航入口。';document.getElementById('map').style.display='none';}
+const BASEMAPS=[
+ {name:'标准地图',url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',options:{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}},
+ {name:'地形地图',url:'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',options:{maxZoom:19,maxNativeZoom:17,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, SRTM · © <a href="https://opentopomap.org/">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'}}
+];
+let basemap=null,basemapIndex=-1,basemapTimer;
+const failedBasemaps=new Set();
+function setBasemap(index,automatic=false){
+ if(!map)return;
+ if(!automatic)failedBasemaps.clear();
+ clearTimeout(basemapTimer);
+ if(basemap)map.removeLayer(basemap);
+ basemapIndex=index;
+ const source=BASEMAPS[index],tiles=L.tileLayer(source.url,source.options);
+ basemap=tiles;
+ let loaded=0,errors=0,switched=false;
+ const button=document.getElementById('switch-map');
+ button.title='当前底图：'+source.name+'；点击切换';
+ button.setAttribute('aria-label',button.title);
+ function fallback(){
+  if(basemap!==tiles||switched)return;
+  switched=true;
+  clearTimeout(basemapTimer);
+  failedBasemaps.add(index);
+  const next=BASEMAPS.findIndex((_,i)=>!failedBasemaps.has(i));
+  if(next>=0){toast('正在尝试备用底图…');setBasemap(next,true);}
+  else toast('底图暂时无法连接。可以点击“切换底图”重试，或使用行程中的导航。');
+ }
+ tiles.on('tileload',()=>{
+  if(basemap!==tiles)return;
+  loaded++;
+  clearTimeout(basemapTimer);
+  document.querySelector('.map-fallback').hidden=true;
+ }).on('tileerror',()=>{if(++errors>=3&&!loaded)fallback();});
+ basemapTimer=setTimeout(()=>{if(!loaded)fallback();},12000);
+ tiles.addTo(map);
+}
+document.getElementById('switch-map').addEventListener('click',()=>{if(map)setBasemap((basemapIndex+1)%BASEMAPS.length);else toast('地图尚未加载。行程导航仍可使用。');});
+if(typeof L!=='undefined'){
+ map=L.map('map',{zoomControl:false,attributionControl:true}).setView([24.8,109.4],7);
+ L.control.zoom({position:'bottomright'}).addTo(map);
+ layer=L.layerGroup().addTo(map);
+ setBasemap(0);
+}else{document.querySelector('.map-fallback p').textContent='地图加载失败。请使用行程卡片中的导航入口。';document.getElementById('map').style.display='none';}
 go(0);
